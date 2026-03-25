@@ -1,0 +1,15 @@
+# https://www.robotstxt.org/robotstxt.html
+
+# Autoriser tous les robots (Google, Bing, etc.) à explorer le site
+User-agent: *
+
+# Ne pas indexer les pages techniques ou juridiques en priorité
+Disallow: /mentions-legales
+Disallow: /404
+Disallow: /static/
+
+# Autoriser l'exploration de toutes les pages de services et avis
+Allow: /
+
+# Emplacement précis du plan du site pour les moteurs de recherche
+Sitemap: https://ds-multiservices.fr/sitemap.xml
