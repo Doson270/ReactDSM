@@ -10,7 +10,12 @@ export default function ReviewForm() {
     setStatus("sending");
 
     // Tes IDs sont maintenant bien intégrés
-    emailjs.sendForm('service_dsm', 'contact_templates_dsm', form.current, 'GqDOtQPpBTuSlnCFA')
+    emailjs.sendForm(
+                    process.env.REACT_APP_EMAILJS_SERVICE_ID,
+                    process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+                    form.current,
+                    process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+                )
       .then(() => {
         setStatus("success");
       }, (error) => {

@@ -10,13 +10,13 @@ export default function Contact() {
     e.preventDefault();
 
     emailjs.sendForm(
-      "service_dsm", 
-      "contact_templates_dsm", 
-      form.current,
-      "GqDOtQPpBTuSlnCFA" 
+    process.env.REACT_APP_EMAILJS_SERVICE_ID,
+    process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+    form.current,
+    process.env.REACT_APP_EMAILJS_PUBLIC_KEY
     ).then(
-      () => alert("Message envoyé avec succès ✅"),
-      (error) => alert("Erreur lors de l'envoi ❌: " + error.text)
+        () => alert("Message envoyé avec succès ✅"),
+        (error) => alert("Erreur lors de l'envoi ❌: " + error.text)
     );
   };
 
