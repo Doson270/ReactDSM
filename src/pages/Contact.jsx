@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import Navbar from "../components/Navbar";
 import emailjs from "@emailjs/browser";
 import { Helmet } from "react-helmet";
+import ContactForm from "../components/ContactForm";
 
 export default function Contact() {
   const form = useRef();
@@ -41,24 +42,7 @@ export default function Contact() {
       </header>
 
       <section style={{ padding: "80px 20px", maxWidth: "700px", margin: "auto" }}>
-        <div className="card-hover" style={{ padding: "50px", background: "white" }}>
-          <form ref={form} onSubmit={sendEmail} className="premium-form">
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
-              <input type="text" name="user_name" placeholder="Nom" required style={{ width: "100%" }} />
-              <input type="text" name="user_firstname" placeholder="Prénom" required style={{ width: "100%" }} />
-            </div>
-            
-            <input type="tel" name="user_phone" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" placeholder="Téléphone" required style={{ width: "100%" }} />
-            
-            <input type="email" name="user_email" placeholder="Adresse Email" required style={{ width: "100%" }} />
-            
-            <input type="text" name="user_adress" placeholder="Adresse des travaux (Optionnel)" style={{ width: "100%" }} />
-            
-            <textarea name="message" placeholder="Décrivez votre projet (ex: Taille de 20m de haie, Élagage chêne...)" required style={{ width: "100%", minHeight: "120px", resize: "none" }} />
-            
-            <button className="btn" style={{ width: "100%", marginTop: "20px" }}>Envoyer la demande</button>
-          </form>
-        </div>
+          <ContactForm />
       </section>
 
       {/* Infos complémentaires */}

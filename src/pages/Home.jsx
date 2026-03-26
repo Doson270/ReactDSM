@@ -95,7 +95,8 @@ export default function Home() {
           {services.map((s, index) => (
             <div key={s.title} 
                  data-aos="fade-up" 
-                 data-aos-delay={index * 150}
+                 data-aos-delay="0"
+                 data-aos-duration="400"
                  className="card-hover"
                  style={{ 
                     padding: "40px", width: "280px", textAlign: "center", 
