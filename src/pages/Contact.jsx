@@ -5,22 +5,6 @@ import { Helmet } from "react-helmet";
 import ContactForm from "../components/ContactForm";
 
 export default function Contact() {
-  const form = useRef();
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs.sendForm(
-    process.env.REACT_APP_EMAILJS_SERVICE_ID,
-    process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-    form.current,
-    process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-    ).then(
-        () => alert("Message envoyé avec succès ✅"),
-        (error) => alert("Erreur lors de l'envoi ❌: " + error.text)
-    );
-  };
-
   return (
     <div className="contact-page">
       <Helmet>
