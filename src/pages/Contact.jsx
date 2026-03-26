@@ -1,6 +1,4 @@
-import React, { useRef } from "react";
 import Navbar from "../components/Navbar";
-import emailjs from "@emailjs/browser";
 import { Helmet } from "react-helmet";
 import ContactForm from "../components/ContactForm";
 
