@@ -23,8 +23,9 @@ export default function Navbar() {
         <li><Link to="/" onClick={() => setOpen(false)}>Accueil</Link></li>
         <li><Link to="/services" onClick={() => setOpen(false)}>Services</Link></li>
         <li><Link to="/PourquoiNous" onClick={() => setOpen(false)}>Expertise</Link></li>
-        <li><Link to="/contact" onClick={() => setOpen(false)}>Contact</Link></li>
         <li><Link to="/avis" onClick={() => setOpen(false)}>Avis</Link></li>
+        <li><Link to="/FAQ" onClick={() => setOpen(false)}>FAQ</Link></li>
+        <li><Link to="/contact" onClick={() => setOpen(false)}>Contact</Link></li>
       </ul>
 
       <div className={`burger ${open ? "toggle" : ""}`} onClick={() => setOpen(!open)}>

@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AOS from "aos";
-import "aos/dist/aos.css"; // Style obligatoire pour les animations
+import "aos/dist/aos.css";
+import ScrollToTop from "./components/ScrollToTop"
 
 // Pages
 import Home from "./pages/Home";
@@ -15,6 +16,8 @@ import MentionsLegales from "./pages/MentionsLegales";
 import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
 import "./App.css";
+import FAQ from "./pages/FAQ";
+import Galerie from "./pages/Galerie";
 
 export default function App() {
   useEffect(() => {
@@ -27,12 +30,15 @@ export default function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/PourquoiNous" element={<PourquoiNous />} />
         <Route path="/Avis" element={<Avis />} />
+        <Route path="/FAQ" element={<FAQ />} />
+        <Route path="/Galerie" element={<Galerie />} />
         <Route path="/mentionslegales" element={<MentionsLegales />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
