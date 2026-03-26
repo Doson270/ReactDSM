@@ -35,34 +35,50 @@ export default function Services() {
         textAlign: "center",
         padding: "100px 20px"
       }}>
-        <span className="subtitle" style={{color: "var(--accent)", letterSpacing:"3px"}}>NOS EXPERTISES</span>
-        <h1 style={{fontSize: "3rem", marginTop: "10px"}}>Entretien & Taille</h1>
+        <div data-aos="fade-down">
+            <span className="subtitle" style={{color: "var(--accent)", letterSpacing:"3px"}}>NOS EXPERTISES</span>
+            <h1 style={{fontSize: "3rem", marginTop: "10px"}}>Entretien & Taille</h1>
+        </div>
       </header>
 
       <section style={{ padding: "80px 5%", maxWidth: "1200px", margin: "auto" }}>
         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "40px" }}>
-          {servicesList.map((service) => (
-            <div key={service.title} className="card-hover" style={{
-              padding: "40px",
-              width: "350px",
-              borderTop: "4px solid var(--accent)" // Petit détail or en haut
-            }}>
+          {servicesList.map((service, index) => (
+            <div 
+              key={service.title} 
+              className="card-hover" 
+              data-aos="fade-up" 
+              data-aos-delay={index * 200} // Décalage de 0.2s entre chaque carte
+              style={{
+                padding: "40px",
+                width: "350px",
+                borderTop: "4px solid var(--accent)" 
+              }}
+            >
               <h3 style={{ marginBottom: "20px", fontSize: "1.8rem" }}>{service.title}</h3>
               <p style={{ marginBottom: "25px", opacity: "0.8" }}>{service.desc}</p>
               <ul style={{ textAlign: "left", paddingLeft: "20px", lineHeight: "2" }}>
-                {service.items.map((item) => <li key={item} style={{listStyleType: "square", color: "var(--accent)"}}><span style={{color: "var(--text-dark)"}}>{item}</span></li>)}
+                {service.items.map((item) => (
+                  <li key={item} style={{listStyleType: "square", color: "var(--accent)"}}>
+                    <span style={{color: "var(--text-dark)"}}>{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           ))}
         </div>
       </section>
 
-      <section style={{ background: "#f4f4f4", padding: "80px 20px", textAlign: "center" }}>
+      <section 
+        data-aos="zoom-in" 
+        style={{ background: "#f4f4f4", padding: "80px 20px", textAlign: "center" }}
+      >
         <h2 style={{ marginBottom: "30px" }}>Un projet spécifique en Gironde ?</h2>
         <a href="/contact" className="btn">Demander mon étude gratuite</a>
       </section>
 
-      <a href="tel:0776553370" className="call-btn" style={{position:"fixed", bottom:"30px", right:"30px", width:"60px", height:"60px", borderRadius:"50%", display:"flex", alignItems:"center", justifyContent:"center", textDecoration:"none", color:"white"}}>📞</a>
+      {/* Bouton d'appel simplifié avec la classe du CSS */}
+      <a href="tel:0776553370" className="floating-call">📞</a>
     </div>
   );
 }

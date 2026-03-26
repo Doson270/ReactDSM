@@ -67,7 +67,8 @@ export default function Contact() {
         <a href="tel:0776553370" style={{ fontSize: "1.5rem", color: "var(--primary)", textDecoration: "none", fontWeight: "700" }}>07 76 55 33 70</a>
       </section>
 
-      <a href="tel:0776553370" className="call-btn" style={{position:"fixed", bottom:"30px", right:"30px", width:"60px", height:"60px", borderRadius:"50%", display:"flex", alignItems:"center", justifyContent:"center", textDecoration:"none", color:"white"}}>📞</a>
+      <a href="tel:0776553370" className="floating-call">📞</a>
+      
     </div>
   );
 }

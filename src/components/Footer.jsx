@@ -15,7 +15,7 @@ export default function Footer() {
           <ul>
             <li><Link to="/" style={{color: 'white'}}>Accueil</Link></li>
             <li><Link to="/services" style={{color: 'white'}}>Nos Services</Link></li>
-            <li><Link to="/pourquoi-nous-choisir" style={{color: 'white'}}>L'Expertise</Link></li>
+            <li><Link to="/PourquoiNous" style={{color: 'white'}}>L'Expertise</Link></li>
             <li><Link to="/contact" style={{color: 'white'}}>Contact & Devis</Link></li>
             <li><Link to="/mentionslegales" style={{color: 'white'}}> Mentions Légales</Link></li> 
           </ul>
