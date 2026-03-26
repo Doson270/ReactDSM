@@ -3,13 +3,12 @@ import emailjs from "@emailjs/browser";
 
 export default function ContactForm() {
   const form = useRef();
-  const [status, setStatus] = useState(""); // "", "sending", "success", "error"
+  const [status, setStatus] = useState(""); 
 
   const sendEmail = (e) => {
     e.preventDefault();
     setStatus("sending");
 
-    // Utilisation de tes variables d'environnement EmailJS
     emailjs.sendForm(
       process.env.REACT_APP_EMAILJS_SERVICE_ID,
       process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
@@ -24,14 +23,14 @@ export default function ContactForm() {
     });
   };
 
-  // --- DESIGN DE VALIDATION SOBRE ---
   if (status === "success") {
     return (
       <div style={{ 
         textAlign: "center", 
         padding: "80px 20px",  
         borderRadius: "15px",
-        boxShadow: "0 10px 30px rgba(0,0,0,0.05)" 
+        boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
+        background: "white"
       }}>
         <h3 style={{ 
           fontFamily: "'Playfair Display', serif", 
@@ -42,7 +41,7 @@ export default function ContactForm() {
           Merci pour votre message.
         </h3>
         <p style={{ color: "#666", fontSize: "1.1rem" }}>
-          Votre demande de devis a été transmise. <br/>
+          Votre demande de devis a été transmise avec succès. <br/>
           Nous reviendrons vers vous sous 48h.
         </p>
       </div>
@@ -54,19 +53,34 @@ export default function ContactForm() {
       <div style={{ maxWidth: "700px", margin: "0 auto" }}>
         
         <form ref={form} onSubmit={sendEmail} className="premium-form">
-          {/* Grille pour Nom et Téléphone */}
+          {/* Ligne 1 : Nom et Téléphone */}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
             <input type="text" name="user_name" placeholder="Nom complet" required />
             <input type="tel" name="user_phone" placeholder="Téléphone" required />
           </div>
           
-          <input type="email" name="user_email" placeholder="Votre Email" required 
+          {/* Ligne 2 : Adresse ou Ville (AJOUTÉ) */}
+          <input 
+            type="text" 
+            name="user_address" 
+            placeholder="Adresse du chantier ou Ville (ex: Bordeaux, 33000)" 
+            required 
             style={{ width: "100%", marginTop: "20px" }} 
           />
 
+          {/* Ligne 3 : Email */}
+          <input 
+            type="email" 
+            name="user_email" 
+            placeholder="Votre adresse Email" 
+            required 
+            style={{ width: "100%", marginTop: "20px" }} 
+          />
+
+          {/* Ligne 4 : Message */}
           <textarea 
             name="message" 
-            placeholder="Décrivez votre projet (élagage, abattage, entretien...)" 
+            placeholder="Détails de votre projet (Nombre d'arbres, hauteur, accès...)" 
             rows="5" 
             required 
             style={{ marginTop: "20px" }}
