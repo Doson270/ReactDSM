@@ -2,6 +2,9 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import imgaccueil from "../assets/gallery/acceuil.webp";
+import imageaccueil2 from "../assets/gallery/accueil2.webp";
+import imgaccueil3 from "../assets/gallery/accueil3.webp"
 
 export default function Home() {
   const services = [
@@ -13,9 +16,9 @@ export default function Home() {
 
   // URLs d'aperçu (Pense à les remplacer par tes images locales plus tard)
   const galleryPreview = [
-    "https://images.unsplash.com/photo-1592150621744-aca64f48394a",
-    "https://images.unsplash.com/photo-1598902108854-10e335adac99",
-    "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?q=80&w=1200"
+    imgaccueil,
+    imageaccueil2,
+    imgaccueil3
   ];
 
   const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d181040.2335447781!2d-0.7428114671875024!3d44.84759600000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527e8f751ca3d%3A0x406651748138de0!2sBordeaux!5e0!3m2!1sfr!2sfr!4v1710434567890!5m2!1sfr!2sfr";

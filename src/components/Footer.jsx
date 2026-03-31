@@ -26,6 +26,8 @@ export default function Footer() {
             <li><Link to="/PourquoiNous" style={{ color: "white" }}>L'Expertise</Link></li>
             <li><Link to="/faq" style={{ color: "white" }}>FAQ</Link></li>
             <li><Link to="/contact" style={{ color: "white" }}>Contact & Devis</Link></li>
+            <li><Link to="/mentionslegales" style={{ color: "white" }}>Mentions légales</Link></li>
+
           </ul>
         </div>
 

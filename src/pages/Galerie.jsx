@@ -4,11 +4,11 @@ import { Helmet } from "react-helmet";
 
 // --- IMPORTATION DES IMAGES (Méthode 1) ---
 // Change les noms de fichiers ici pour qu'ils correspondent aux tiens
-import img1 from "../assets/gallery/abattage-arbre-dangereux-33.png";
-import img2 from "../assets/gallery/elagage-en-securité.jpg";
-import img3 from "../assets/gallery/evacuation-dechets-verts-propre.png";
-import img4 from "../assets/gallery/taille-haie-rectiligne-gironde.png";
-import img5 from "../assets/gallery/taille-arbre-fruitier.jpg";
+import img1 from "../assets/gallery/abattage-arbre-dangereux-33.webp";
+import img2 from "../assets/gallery/elagage-en-securité.webp";
+import img3 from "../assets/gallery/evacuation-dechets-verts-propre.webp";
+import img4 from "../assets/gallery/taille-haie-rectiligne-gironde.webp";
+import img5 from "../assets/gallery/taille-arbre-fruitier.webp";
 // import img6 from "../assets/gallery/chantier6.jpg";
 
 export default function Galerie() {
