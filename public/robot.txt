@@ -3,13 +3,13 @@
 # Autoriser tous les robots (Google, Bing, etc.) à explorer le site
 User-agent: *
 
-# Ne pas indexer les pages techniques ou juridiques en priorité
-Disallow: /mentions-legales
+# Ne pas indexer les pages techniques (vérifie bien l'orthographe de tes URLs)
+Disallow: /mentionslegales
 Disallow: /404
 Disallow: /static/
 
-# Autoriser l'exploration de toutes les pages de services et avis
+# Autoriser tout le reste (Services, Avis, PourquoiNous, etc.)
 Allow: /
 
-# Emplacement précis du plan du site pour les moteurs de recherche
-Sitemap: https://ds-multiservices.fr/sitemap.xml
+# Emplacement précis du plan du site
+Sitemap: https://dsmultiservices.vercel.app/sitemap.xml
