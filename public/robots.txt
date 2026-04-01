@@ -1,14 +1,8 @@
-# https://www.robotstxt.org/robotstxt.html
-
-# Autoriser tous les robots (Google, Bing, etc.) à explorer le site
 User-agent: *
 
-# Ne pas indexer les pages techniques (vérifie bien l'orthographe de tes URLs)
+Disallow: /mentionslegales
 Disallow: /404
 
-
-# Autoriser tout le reste (Services, Avis, PourquoiNous, etc.)
 Allow: /
 
-# Emplacement précis du plan du site
 Sitemap: https://dsmultiservices.vercel.app/sitemap.xml
