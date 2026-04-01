@@ -29,7 +29,7 @@ export default function Home() {
         <title>DS Multiservices | Élagage, Abattage & Taille de Haies à Bordeaux (33)</title>
         <meta name="description" content="Expert élagueur en Gironde. Devis gratuit sous 48h. Travaux assurés RC Pro, évacuation des déchets verts. Intervention rapide à Bordeaux et alentours." />
         <meta name="keywords" content="élagage bordeaux, abattage arbre gironde, taille de haie bordeaux, jardinier 33, ds multiservices, entretien jardin gironde" />
-        <link rel="canonical" href="https://votre-site-final.fr/" />
+        <link rel="canonical" href="https://dsmultiservices.vercel.app/" />
       </Helmet>
       
       <Navbar />

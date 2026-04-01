@@ -23,9 +23,9 @@ export default function Navbar() {
       <ul className={open ? "nav-links open" : "nav-links"}>
         <li><Link to="/" onClick={closeMenu}>Accueil</Link></li>
         <li><Link to="/services" onClick={closeMenu}>Services</Link></li>
-        <li><Link to="/PourquoiNous" onClick={closeMenu}>Expertise</Link></li>
+        <li><Link to="/Pourquoi-nous" onClick={closeMenu}>Expertise</Link></li>
         <li><Link to="/avis" onClick={closeMenu}>Avis</Link></li>
-        <li><Link to="/FAQ" onClick={closeMenu}>FAQ</Link></li>
+        <li><Link to="/faq" onClick={closeMenu}>FAQ</Link></li>
         <li className="nav-btn-container">
           <Link to="/contact" className="nav-btn" onClick={closeMenu}>
             Devis Gratuit
