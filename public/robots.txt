@@ -5,7 +5,7 @@ User-agent: *
 
 # Ne pas indexer les pages techniques (vérifie bien l'orthographe de tes URLs)
 Disallow: /404
-Disallow: /static/
+
 
 # Autoriser tout le reste (Services, Avis, PourquoiNous, etc.)
 Allow: /
