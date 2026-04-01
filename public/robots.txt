@@ -4,7 +4,6 @@
 User-agent: *
 
 # Ne pas indexer les pages techniques (vérifie bien l'orthographe de tes URLs)
-Disallow: /mentionslegales
 Disallow: /404
 Disallow: /static/
 
