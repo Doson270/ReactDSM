@@ -17,13 +17,19 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (navRef.current) {
-      if (!open) {
-        navRef.current.setAttribute("inert", "");
-      } else {
-        navRef.current.removeAttribute("inert");
+    const handleInert = () => {
+      if (navRef.current) {
+        const isMobile = window.innerWidth <= 1024;
+        if (!open && isMobile) {
+          navRef.current.setAttribute("inert", "");
+        } else {
+          navRef.current.removeAttribute("inert");
+        }
       }
-    }
+    };
+    window.addEventListener("resize", handleInert);
+    handleInert();
+    return () => window.removeEventListener("resize", handleInert);
   }, [open]);
 
   return (
