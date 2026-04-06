@@ -1,54 +1,53 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
-// Composant pour chaque ligne de la FAQ
 const AccordionItem = ({ question, answer, index }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div 
-      data-aos="fade-up" 
+    <div
+      data-aos="fade-up"
       data-aos-delay={index * 100}
-      style={{ 
-        marginBottom: "15px", 
-        border: "1px solid #ececec", 
-        borderRadius: "12px", 
+      style={{
+        marginBottom: "15px",
+        border: "1px solid #ececec",
+        borderRadius: "12px",
         backgroundColor: "white",
         overflow: "hidden",
         boxShadow: isOpen ? "0 10px 25px rgba(0,0,0,0.05)" : "none",
         transition: "all 0.3s ease"
       }}
     >
-      <button 
+      <button
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         style={{
           width: "100%", padding: "25px", textAlign: "left", border: "none",
-          background: "none", cursor: "pointer", display: "flex", 
+          background: "none", cursor: "pointer", display: "flex",
           justifyContent: "space-between", alignItems: "center"
         }}
       >
-        <span style={{ 
-            fontWeight: "700", 
-            color: isOpen ? "#c5a358" : "#1a3c34", 
-            fontSize: "1.1rem",
-            transition: "color 0.3s"
+        <span style={{
+          fontWeight: "700",
+          color: isOpen ? "#c5a358" : "#1a3c34",
+          fontSize: "1.1rem",
+          transition: "color 0.3s"
         }}>
           {question}
         </span>
-        <span style={{ 
-            color: "#c5a358", 
-            fontSize: "1.5rem",
-            transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
-            transition: "transform 0.3s",
-            fontWeight: "300"
+        <span style={{
+          color: "#c5a358",
+          fontSize: "1.5rem",
+          transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
+          transition: "transform 0.3s",
+          fontWeight: "300"
         }}>{isOpen ? "✕" : "+"}</span>
       </button>
-      
-      <div style={{ 
-        maxHeight: isOpen ? "400px" : "0", 
-        overflow: "hidden", 
+
+      <div style={{
+        maxHeight: isOpen ? "400px" : "0",
+        overflow: "hidden",
         transition: "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
         padding: isOpen ? "0 25px 25px 25px" : "0 25px"
       }}>
@@ -83,8 +82,8 @@ export default function FAQ() {
       a: "Cela dépend de l'essence, mais en Gironde, la taille de sécurité se fait idéalement en période de repos végétatif (automne/hiver). Pour une taille de restructuration, le printemps est aussi possible."
     },
     {
-        q: "Comment se passe le paiement ?",
-        a: "Nous acceptons les virements bancaires et les chèques. Une facture détaillée vous est remise à la fin du chantier une fois que vous avez validé la propreté des lieux."
+      q: "Comment se passe le paiement ?",
+      a: "Nous acceptons les virements bancaires et les chèques. Une facture détaillée vous est remise à la fin du chantier une fois que vous avez validé la propreté des lieux."
     }
   ];
 
@@ -93,44 +92,57 @@ export default function FAQ() {
       <Helmet>
         <title>FAQ Élagage & Jardin Bordeaux | DS Multiservices Gironde</title>
         <meta name="description" content="Toutes les réponses à vos questions sur l'élagage d'arbres, l'abattage, la taille de haies et les tarifs en Gironde. Devis gratuit et intervention rapide." />
-        <meta name="keywords" content="faq élagage bordeaux, tarif abattage arbre 33, entretien jardin questions, devis élagueur gironde" />
+        <meta property="og:title" content="FAQ Élagage & Jardinage Bordeaux | DS Multiservices" />
+        <meta property="og:description" content="Toutes les réponses à vos questions sur l'élagage, taille de haies et entretien de jardin à Bordeaux et en Gironde." />
+        <meta property="og:url" content="https://dsmultiservices.vercel.app/faq" />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://dsmultiservices.vercel.app/faq" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqs.map(f => ({
+            "@type": "Question",
+            "name": f.q,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": f.a
+            }
+          }))
+        })}</script>
       </Helmet>
 
       <Navbar />
 
-      {/* Header Section */}
-      <header style={{ 
-        background: "linear-gradient(rgba(26,60,52,0.85), rgba(26,60,52,0.85)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000') center/cover", 
-        color: "white", padding: "140px 20px", textAlign: "center" 
+      <header style={{
+        background: "linear-gradient(rgba(26,60,52,0.85), rgba(26,60,52,0.85)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000') center/cover",
+        color: "white", padding: "140px 20px", textAlign: "center"
       }}>
         <div data-aos="fade-down">
-            <span style={{ color: "#c5a358", letterSpacing: "3px", fontSize: "0.9rem", fontWeight: "700" }}>AIDE & CONSEILS</span>
-            <h1 style={{ fontSize: "3.5rem", marginTop: "10px", fontFamily: "'Playfair Display', serif" }}>Vos Questions</h1>
+          <span style={{ color: "#c5a358", letterSpacing: "3px", fontSize: "0.9rem", fontWeight: "700" }}>AIDE & CONSEILS</span>
+          <h1 style={{ fontSize: "3.5rem", marginTop: "10px", fontFamily: "'Playfair Display', serif" }}>FAQ Élagage & Jardinage à Bordeaux</h1>
         </div>
       </header>
 
-      {/* Accordion Section */}
       <main style={{ maxWidth: "850px", margin: "80px auto", padding: "0 20px" }}>
         <div style={{ textAlign: "center", marginBottom: "60px" }} data-aos="fade">
-            <h2 style={{ color: "#1a3c34", fontSize: "2rem" }}>Questions Fréquentes</h2>
-            <div style={{ width: "50px", height: "3px", background: "#c5a358", margin: "20px auto" }}></div>
-            <p style={{ color: "#777" }}>Retrouvez ici les réponses aux interrogations les plus courantes de nos clients bordelais.</p>
+          <h2 style={{ color: "#1a3c34", fontSize: "2rem" }}>Questions Fréquentes</h2>
+          <div style={{ width: "50px", height: "3px", background: "#c5a358", margin: "20px auto" }}></div>
+          <p style={{ color: "#777" }}>Retrouvez ici les réponses aux interrogations les plus courantes de nos clients bordelais.</p>
         </div>
 
         <div className="faq-list">
-            {faqs.map((f, i) => (
+          {faqs.map((f, i) => (
             <AccordionItem key={i} question={f.q} answer={f.a} index={i} />
-            ))}
+          ))}
         </div>
 
-        {/* Contact CTA Block */}
-        <div 
+        <div
           data-aos="zoom-in"
-          style={{ 
-            marginTop: "100px", 
-            padding: "60px 40px", 
-            background: "#1a3c34", 
-            borderRadius: "24px", 
+          style={{
+            marginTop: "100px",
+            padding: "60px 40px",
+            background: "#1a3c34",
+            borderRadius: "24px",
             textAlign: "center",
             color: "white",
             boxShadow: "0 20px 40px rgba(26, 60, 52, 0.2)"
@@ -138,21 +150,24 @@ export default function FAQ() {
         >
           <h2 style={{ fontSize: "2.2rem", marginBottom: "20px", fontFamily: "'Playfair Display', serif" }}>Encore un doute ?</h2>
           <p style={{ marginBottom: "35px", opacity: 0.8, maxWidth: "600px", margin: "0 auto 35px" }}>
-              Chaque jardin est unique. Contactez-nous pour obtenir un conseil personnalisé pour vos arbres ou vos espaces verts.
+            Chaque jardin est unique. Contactez-nous pour obtenir un conseil personnalisé pour vos arbres ou vos espaces verts.
           </p>
           <div style={{ display: "flex", gap: "20px", justifyContent: "center", flexWrap: "wrap" }}>
             <a href="/contact" className="btn" style={{ minWidth: "200px" }}>Nous écrire</a>
-            <a href="tel:0776553370" className="btn" style={{ 
-                background: "transparent", 
-                border: "2px solid white", 
-                minWidth: "200px" 
+            <a href="tel:+33776553370" className="btn" style={{
+              background: "transparent",
+              border: "2px solid white",
+              minWidth: "200px"
             }}>07 76 55 33 70</a>
           </div>
         </div>
       </main>
 
-      {/* Floating Action Button (CSS class defined in App.css) */}
-      <a href="tel:0776553370" className="floating-call">📞</a>
+      <a href="tel:+33776553370" className="floating-call" aria-label="Appeler DS Multiservices">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+        </svg>
+      </a>
     </div>
   );
 }

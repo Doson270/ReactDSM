@@ -1,18 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/gallery/logo-dsm.png"; 
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const navRef = useRef(null);
 
-  // Fonction pour fermer le menu après un clic
   const closeMenu = () => setOpen(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    if (navRef.current) {
+      if (!open) {
+        navRef.current.setAttribute("inert", "");
+      } else {
+        navRef.current.removeAttribute("inert");
+      }
+    }
+  }, [open]);
 
   return (
     <nav className="navbar">
       {/* --- LOGO --- */}
       <Link to="/" className="nav-logo" onClick={closeMenu}>
-        <img src={logo} alt="Logo" style={{ height: "45px" }} />
+        <img src={logo} alt="DS Multiservices - Élagage et paysage à Bordeaux" style={{ height: "45px" }} />
         <div className="logo-text">
           <span className="brand-name">DS MULTISERVICES</span>
           <span className="brand-sub">ÉLAGAGE & PAYSAGE</span>
@@ -20,10 +38,10 @@ export default function Navbar() {
       </Link>
 
       {/* --- LIENS DE NAVIGATION --- */}
-      <ul className={open ? "nav-links open" : "nav-links"}>
+      <ul ref={navRef} className={open ? "nav-links open" : "nav-links"}>
         <li><Link to="/" onClick={closeMenu}>Accueil</Link></li>
         <li><Link to="/services" onClick={closeMenu}>Services</Link></li>
-        <li><Link to="/Pourquoi-nous" onClick={closeMenu}>Expertise</Link></li>
+        <li><Link to="/pourquoi-nous" onClick={closeMenu}>Expertise</Link></li>
         <li><Link to="/avis" onClick={closeMenu}>Avis</Link></li>
         <li><Link to="/faq" onClick={closeMenu}>FAQ</Link></li>
         <li className="nav-btn-container">
@@ -34,7 +52,13 @@ export default function Navbar() {
       </ul>
 
       {/* --- BOUTON BURGER --- */}
-      <div className={open ? "hamburger toggle" : "hamburger"} onClick={() => setOpen(!open)}>
+      <div
+        className={open ? "hamburger toggle" : "hamburger"}
+        onClick={() => setOpen(!open)}
+        aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+        role="button"
+        aria-expanded={open}
+      >
         <div className="line1"></div>
         <div className="line2"></div>
         <div className="line3"></div>
@@ -53,7 +77,7 @@ export default function Navbar() {
           top: 0;
           left: 0;
           z-index: 9999;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+          border-bottom: 1px solid #e0e0e0;
           box-sizing: border-box;
         }
 
@@ -83,7 +107,6 @@ export default function Navbar() {
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 6px; }
         .hamburger div { width: 28px; height: 3px; background: #1a3c34; transition: 0.4s; }
 
-        /* --- RESPONSIVE MOBILE --- */
         @media screen and (max-width: 1024px) {
           .hamburger { display: flex; z-index: 10001; }
 
@@ -92,7 +115,7 @@ export default function Navbar() {
             top: 0;
             right: 0;
             height: 100vh;
-            width: 100%; /* Prend tout l'écran pour être sûr de tout voir */
+            width: 100%;
             background: #ffffff;
             flex-direction: column;
             justify-content: center;
@@ -104,11 +127,10 @@ export default function Navbar() {
           .nav-links.open { transform: translateX(0); }
 
           .nav-links li { margin: 20px 0; }
-          .nav-links li a { font-size: 1.2rem; } /* Plus gros sur mobile */
+          .nav-links li a { font-size: 1.2rem; }
 
           .nav-btn-container { margin-top: 20px; }
 
-          /* Animation X */
           .toggle .line1 { transform: rotate(-45deg) translate(-6px, 7px); }
           .toggle .line2 { opacity: 0; }
           .toggle .line3 { transform: rotate(45deg) translate(-6px, -7px); }

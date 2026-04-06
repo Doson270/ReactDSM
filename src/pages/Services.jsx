@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 export default function Services() {
   const servicesList = [

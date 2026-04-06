@@ -3,25 +3,39 @@ import emailjs from "@emailjs/browser";
 
 export default function ReviewForm() {
   const form = useRef();
-  const [status, setStatus] = useState(""); // "", "sending", "success", "error"
+  const [status, setStatus] = useState("");
 
   const sendEmail = (e) => {
     e.preventDefault();
+
+    const name = form.current.user_name.value.trim();
+    const message = form.current.message.value.trim();
+
+    if (name.length < 2) {
+      setStatus("error-name");
+      return;
+    }
+    if (message.length < 10) {
+      setStatus("error-message");
+      return;
+    }
+
     setStatus("sending");
 
-    // Tes IDs sont maintenant bien intégrés
     emailjs.sendForm(
-                    process.env.REACT_APP_EMAILJS_SERVICE_ID,
-                    process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-                    form.current,
-                    process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-                )
-      .then(() => {
-        setStatus("success");
-      }, (error) => {
-        setStatus("error");
-        console.log(error.text);
-      });
+      process.env.REACT_APP_EMAILJS_SERVICE_ID,
+      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+      form.current,
+      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+    )
+    .then(() => {
+      setStatus("success");
+      form.current.reset();
+    })
+    .catch((error) => {
+      setStatus("error");
+      console.error("EmailJS error:", error);
+    });
   };
 
   if (status === "success") {
@@ -37,16 +51,16 @@ export default function ReviewForm() {
     <section style={{ padding: "80px 20px", background: "white" }}>
       <div style={{ maxWidth: "700px", margin: "0 auto" }}>
         <h2 style={{ textAlign: "center", marginBottom: "40px" }}>Laisser un avis</h2>
-        
+
         <form ref={form} onSubmit={sendEmail} className="premium-form">
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
             <input type="text" name="user_name" placeholder="Nom complet" required />
             <input type="text" name="user_city" placeholder="Ville (ex: Bordeaux)" required />
           </div>
-          
-          <select name="rating" style={{ 
-            width: "100%", border: "none", borderBottom: "1px solid #e0e0e0", 
-            padding: "15px 0", marginBottom: "25px", background: "transparent" 
+
+          <select name="rating" style={{
+            width: "100%", border: "none", borderBottom: "1px solid #e0e0e0",
+            padding: "15px 0", marginBottom: "25px", background: "transparent"
           }}>
             <option value="5">★★★★★ - Excellent</option>
             <option value="4">★★★★☆ - Très bien</option>
@@ -57,10 +71,22 @@ export default function ReviewForm() {
 
           <textarea name="message" placeholder="Votre message..." rows="4" required></textarea>
 
+          {status === "error-name" && (
+            <p style={{ color: "red", marginTop: "10px" }}>Le nom doit contenir au moins 2 caractères.</p>
+          )}
+          {status === "error-message" && (
+            <p style={{ color: "red", marginTop: "10px" }}>Le message doit contenir au moins 10 caractères.</p>
+          )}
+          {status === "error" && (
+            <p style={{ color: "red", textAlign: "center", marginTop: "15px" }}>
+              Une erreur est survenue. Veuillez réessayer.
+            </p>
+          )}
+
           <div style={{ textAlign: "center", marginTop: "30px" }}>
-            <button 
-              type="submit" 
-              className="btn" 
+            <button
+              type="submit"
+              className="btn"
               disabled={status === "sending"}
               style={{
                 opacity: status === "sending" ? "0.7" : "1",
@@ -82,13 +108,7 @@ export default function ReviewForm() {
               )}
             </button>
           </div>
-          
-          {status === "error" && (
-            <p style={{ color: "red", textAlign: "center", marginTop: "15px" }}>
-              Une erreur est survenue. Veuillez réessayer.
-            </p>
-          )}
-        </form> {/* <--- La fermeture manquante était ici */}
+        </form>
       </div>
     </section>
   );
