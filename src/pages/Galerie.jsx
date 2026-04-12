@@ -36,8 +36,8 @@ export default function Galerie() {
         <meta property="og:description" content="Découvrez nos réalisations en images : élagage, abattage d'arbres et entretien de jardins en Gironde." />
         <meta property="og:url" content="https://dsmultiservices.vercel.app/galerie" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://dsmultiservices.vercel.app/logo-dsm.png" />
-        <link rel="canonical" href="https://dsmultiservices.vercel.app/galerie" />
+        <meta property="og:image" content="https://dsmultiservices.fr/logo-dsm.png" />
+        <link rel="canonical" href="https://dsmultiservices.fr/galerie" />
       </Helmet>
 
       <Navbar />

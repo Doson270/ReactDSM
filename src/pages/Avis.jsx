@@ -18,9 +18,9 @@ export default function Avis() {
         <meta name="description" content="Découvrez les avis de nos clients sur nos services d'entretien de jardin, taille de haies et élagage à Bordeaux et en Gironde. Laissez votre témoignage." />
         <meta property="og:title" content="Avis Clients - DS Multiservices | Jardinage Bordeaux" />
         <meta property="og:description" content="Découvrez les avis de nos clients sur nos services d'entretien de jardin et élagage à Bordeaux." />
-        <meta property="og:url" content="https://dsmultiservices.vercel.app/avis" />
+        <meta property="og:url" content="https://dsmultiservices.fr/avis" />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://dsmultiservices.vercel.app/avis" />
+        <link rel="canonical" href="https://dsmultiservices.fr/avis" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",

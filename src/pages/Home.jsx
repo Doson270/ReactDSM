@@ -31,10 +31,10 @@ export default function Home() {
         <meta name="description" content="Expert élagueur en Gironde. Devis gratuit sous 48h. Travaux assurés RC Pro, évacuation des déchets verts. Intervention rapide à Bordeaux et alentours." />
         <meta property="og:title" content="DS Multiservices | Élagage & Jardinage à Bordeaux" />
         <meta property="og:description" content="Expert élagueur en Gironde. Devis gratuit sous 48h. Travaux assurés RC Pro, évacuation des déchets verts." />
-        <meta property="og:url" content="https://dsmultiservices.vercel.app/" />
+        <meta property="og:url" content="https://dsmultiservices.fr/" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://dsmultiservices.vercel.app/logo-dsm.png" />
-        <link rel="canonical" href="https://dsmultiservices.vercel.app/" />
+        <meta property="og:image" content="https://dsmultiservices.fr/logo-dsm.png" />
+        <link rel="canonical" href="https://dsmultiservices.fr/" />
       </Helmet>
 
       <Navbar />

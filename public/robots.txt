@@ -5,4 +5,4 @@ Disallow: /404
 
 Allow: /
 
-Sitemap: https://dsmultiservices.vercel.app/sitemap.xml
+Sitemap: https://dsmultiservices.fr/sitemap.xml

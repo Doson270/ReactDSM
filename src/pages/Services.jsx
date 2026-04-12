@@ -29,9 +29,9 @@ export default function Services() {
         <meta name="description" content="DS Multiservices propose l'élagage, la taille de haies et l'entretien de jardin à Bordeaux et en Gironde. Devis gratuit, intervention rapide." />
         <meta property="og:title" content="Services Élagage & Jardinage Bordeaux | DS Multiservices" />
         <meta property="og:description" content="Élagage, taille de haies et entretien de jardin à Bordeaux et en Gironde. Devis gratuit." />
-        <meta property="og:url" content="https://dsmultiservices.vercel.app/services" />
+        <meta property="og:url" content="https://dsmultiservices.fr/services" />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://dsmultiservices.vercel.app/services" />
+        <link rel="canonical" href="https://dsmultiservices.fr/services" />
       </Helmet>
 
       <Navbar />

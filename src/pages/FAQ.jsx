@@ -94,9 +94,9 @@ export default function FAQ() {
         <meta name="description" content="Toutes les réponses à vos questions sur l'élagage d'arbres, l'abattage, la taille de haies et les tarifs en Gironde. Devis gratuit et intervention rapide." />
         <meta property="og:title" content="FAQ Élagage & Jardinage Bordeaux | DS Multiservices" />
         <meta property="og:description" content="Toutes les réponses à vos questions sur l'élagage, taille de haies et entretien de jardin à Bordeaux et en Gironde." />
-        <meta property="og:url" content="https://dsmultiservices.vercel.app/faq" />
+        <meta property="og:url" content="https://dsmultiservices.fr/faq" />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://dsmultiservices.vercel.app/faq" />
+        <link rel="canonical" href="https://dsmultiservices.fr/faq" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "FAQPage",

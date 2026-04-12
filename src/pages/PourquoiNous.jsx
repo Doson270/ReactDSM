@@ -18,9 +18,9 @@ export default function PourquoiNous() {
         <meta name="description" content="Découvrez pourquoi DS Multiservices est le spécialiste de l'élagage et de l'entretien de jardin en Gironde. Expertise locale, équipe assurée, intervention rapide." />
         <meta property="og:title" content="Pourquoi Choisir DS Multiservices | Élagage Bordeaux" />
         <meta property="og:description" content="Expertise locale, équipe assurée RC Pro, réactivité et engagement écologique. Élagueur professionnel à Bordeaux et en Gironde." />
-        <meta property="og:url" content="https://dsmultiservices.vercel.app/pourquoi-nous" />
+        <meta property="og:url" content="https://dsmultiservices.fr/pourquoi-nous" />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://dsmultiservices.vercel.app/pourquoi-nous" />
+        <link rel="canonical" href="https://dsmultiservices.fr/pourquoi-nous" />
       </Helmet>
       <Navbar />
 
