@@ -169,11 +169,17 @@ export default function Home() {
   href="tel:+33776553370" 
   className="floating-call" 
   aria-label="Appeler DS Multiservices"
-  onClick={() => {
+  onClick={(e) => {
+    // Étape 1 : On vérifie dans la console que le clic fonctionne
+    console.log("Clic sur le bouton d'appel détecté");
+
     if (window.gtag) {
       window.gtag('event', 'conversion', {
-        'send_to': 'AW-18085079647/vELTCOrkhpscEN_U0a9D'
+        'send_to': 'AW-18085079647/vELTCOrkhpscEN_U0a9D',
+        'event_callback': () => console.log("Signal de conversion envoyé à Google avec succès !")
       });
+    } else {
+      console.warn("Attention : window.gtag n'est pas défini. Vérifiez index.html");
     }
   }}
 >
