@@ -41,7 +41,7 @@ export default function Home() {
 
       {/* --- HERO SECTION --- */}
       <header className="hero-section" style={{
-        background: "linear-gradient(rgba(26,60,52,0.7), rgba(26,60,52,0.7)), url('https://images.unsplash.com/photo-1592150621744-aca64f48394a?q=80&w=2000') center/cover",
+        background: `linear-gradient(rgba(26,60,52,0.7), rgba(26,60,52,0.7)), url(${imgaccueil}) center/cover`,
         color: "white", textAlign: "center", padding: "160px 20px"
       }}>
         <div data-aos="fade-down">
