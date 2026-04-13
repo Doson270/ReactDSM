@@ -34,7 +34,7 @@ export default function Galerie() {
         <meta name="description" content="Découvrez nos réalisations en images : élagage, abattage d'arbres et entretien de jardins en Gironde. Travail propre et sécurisé." />
         <meta property="og:title" content="Galerie Élagage & Jardinage Bordeaux | DS Multiservices" />
         <meta property="og:description" content="Découvrez nos réalisations en images : élagage, abattage d'arbres et entretien de jardins en Gironde." />
-        <meta property="og:url" content="https://dsmultiservices.vercel.app/galerie" />
+        <meta property="og:url" content="https://dsmultiservices.fr/galerie" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://dsmultiservices.fr/logo-dsm.png" />
         <link rel="canonical" href="https://dsmultiservices.fr/galerie" />

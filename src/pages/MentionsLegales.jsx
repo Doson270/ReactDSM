@@ -28,26 +28,30 @@ export default function MentionsLegales() {
         </section>
 
         <section style={{ marginBottom: "40px" }}>
-          <h2 style={{ color: "#c5a358", fontSize: "1.3rem" }}>2. Hébergement</h2>
-          <p>Le site est hébergé par Vercel Inc.</p>
+          <h2 style={{ color: "#c5a358", fontSize: "1.3rem" }}>2. Hébergement et Domaine</h2>
+          <p><strong>Hébergement technique :</strong> Vercel Inc.</p>
           <p>Adresse : 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis.</p>
-          <p>Site web : <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style={{ color: "#1a3c34" }}>vercel.com</a></p>
+          <p>Site web : <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style={{ color: "#1a3c34" }}>www.vercel.com</a></p>
+          
+          <p style={{ marginTop: "15px" }}><strong>Gestion du nom de domaine :</strong> IONOS SARL</p>
+          <p>Adresse : 7, place de la Gare, BP 70109, 57200 Sarreguemines Cedex, France.</p>
         </section>
 
         <section style={{ marginBottom: "40px" }}>
           <h2 style={{ color: "#c5a358", fontSize: "1.3rem" }}>3. Propriété intellectuelle</h2>
-          <p>L'ensemble des textes, photos et logos présents sur ce site sont la propriété exclusive de DS Multiservices. Toute reproduction, même partielle, est interdite sans accord préalable écrit.</p>
+          <p>L'ensemble des textes, photos et logos présents sur ce site sont la propriété exclusive de DS Multiservices. Toute reproduction, même partielle, est interdite sans accord préalable écrit de l'éditeur.</p>
         </section>
 
         <section style={{ marginBottom: "40px" }}>
           <h2 style={{ color: "#c5a358", fontSize: "1.3rem" }}>4. Protection des données (RGPD)</h2>
-          <p>Les informations recueillies via le formulaire de contact (Nom, Téléphone, Email, Adresse) sont utilisées uniquement pour répondre à vos demandes de devis. Elles ne sont jamais cédées à des tiers et sont conservées pendant une durée maximale de 3 ans.</p>
-          <p>Conformément à la loi « Informatique et Libertés », vous pouvez exercer vos droits d'accès, de rectification, de suppression et d'opposition aux données vous concernant en nous contactant par <a href="tel:+33776553370" style={{ color: "#1a3c34" }}>téléphone</a> ou <a href="mailto:contact@dsmultiservices.fr" style={{ color: "#1a3c34" }}>email</a>.</p>
+          <p>Les informations recueillies via le formulaire de contact (Nom, Téléphone, Email, Adresse) sont nécessaires pour répondre à vos demandes de devis. Elles sont destinées exclusivement à DS Multiservices et ne sont jamais cédées à des tiers.</p>
+          <p>Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour l'exercer, contactez-nous par email à : <a href="mailto:dosonsarrailh270@gmail.com" style={{ color: "#1a3c34" }}>dosonsarrailh270@gmail.com</a>.</p>
         </section>
 
         <section style={{ marginBottom: "40px" }}>
           <h2 style={{ color: "#c5a358", fontSize: "1.3rem" }}>5. Médiation de la consommation</h2>
-          <p>En cas de litige non résolu avec notre entreprise, vous avez le droit de recourir gratuitement à un médiateur de la consommation. Vous pouvez contacter le médiateur rattaché à votre secteur d'activité (ex: CM2C ou Médicys).</p>
+          <p>Conformément aux articles L.616-1 et R.616-1 du code de la consommation, en cas de litige, vous pouvez déposer votre réclamation auprès du médiateur :</p>
+          <p><strong>CM2C</strong> – 14 rue Saint Jean, 75017 Paris | <a href="https://www.cm2c.net" target="_blank" rel="noopener noreferrer" style={{ color: "#1a3c34" }}>www.cm2c.net</a></p>
         </section>
       </div>
     </div>

@@ -10,9 +10,9 @@ export default function Contact() {
         <meta name="description" content="Demandez votre devis gratuit pour l'entretien de jardin, taille de haies et élagage à Bordeaux et en Gironde. Réponse sous 24h. DS Multiservices." />
         <meta property="og:title" content="Devis Gratuit - Élagage & Jardinage à Bordeaux | DS Multiservices" />
         <meta property="og:description" content="Demandez votre devis gratuit pour l'entretien de jardin et élagage à Bordeaux. Réponse sous 24h." />
-        <meta property="og:url" content="https://dsmultiservices.vercel.app/contact" />
+        <meta property="og:url" content="https://dsmultiservices.fr/contact" />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://dsmultiservices.vercel.app/contact" />
+        <link rel="canonical" href="https://dsmultiservices.fr/contact" />
       </Helmet>
 
       <Navbar />
