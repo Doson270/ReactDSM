@@ -34,16 +34,37 @@ export default function Contact() {
 
       <section style={{ textAlign: "center", paddingBottom: "80px" }}>
         <p style={{ fontWeight: "600" }}>Ou contactez-nous directement :</p>
-        <a href="tel:+33776553370" style={{ fontSize: "1.5rem", color: "var(--primary)", textDecoration: "none", fontWeight: "700" }}>
+        <a 
+          href="tel:+33776553370" 
+          style={{ fontSize: "1.5rem", color: "var(--primary)", textDecoration: "none", fontWeight: "700" }}
+          onClick={() => {
+            if (window.gtag) {
+              window.gtag('event', 'conversion', {
+                'send_to': 'AW-18085079647/vELTCOrkhpscEN_U0a9D'
+              });
+            }
+          }}
+        >
           07 76 55 33 70
         </a>
       </section>
 
-      <a href="tel:+33776553370" className="floating-call" aria-label="Appeler DS Multiservices">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
-        </svg>
-      </a>
+        <a 
+          href="tel:+33776553370" 
+          className="floating-call" 
+          aria-label="Appeler DS Multiservices"
+          onClick={() => {
+            if (window.gtag) {
+              window.gtag('event', 'conversion', {
+                'send_to': 'AW-18085079647/vELTCOrkhpscEN_U0a9D'
+              });
+            }
+          }}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+          </svg>
+        </a>
 
     </div>
   );
