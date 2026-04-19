@@ -45,14 +45,67 @@ export default function Home() {
         color: "white", textAlign: "center", padding: "160px 20px"
       }}>
         <div data-aos="fade-down">
-          <h1 style={{ fontSize: "clamp(2.5rem, 8vw, 4rem)", marginBottom: "15px", fontFamily: "'Playfair Display', serif", fontWeight: 900 }}>L'Art de l'Élagage</h1>
-          <p style={{ fontSize: "1.3rem", marginBottom: "40px", opacity: 0.9, maxWidth: "800px", margin: "0 auto 40px" }}>Bordeaux & Gironde — Taille de précision et mise en sécurité de vos arbres</p>
-          <div style={{ marginBottom: "20px" }}>
-            <Link to="/contact" className="btn" style={{ padding: "15px 40px", fontSize: "1.1rem" }}>Demander mon devis gratuit</Link>
-            <p style={{ marginTop: "25px", fontSize: "1rem", color: "#c5a358", fontWeight: "bold" }}>
-              <span style={{ color: "#ffc107" }}>★★★★★</span> +50 clients satisfaits en 2025
-            </p>
+          <h1 style={{ fontSize: "clamp(2.5rem, 8vw, 4rem)", marginBottom: "15px", fontFamily: "'Playfair Display', serif", fontWeight: 900 }}>Entretien & Aménagement d'Espaces Verts</h1>
+          <p style={{ fontSize: "1.3rem", marginBottom: "40px", opacity: 0.9, maxWidth: "800px", margin: "0 auto 40px" }}>Intervention rapide & Urgence 7j/7. Devis Gratuit sous 48h à Bordeaux et alentours.</p>
+          
+          <div style={{ marginBottom: "20px", display: "flex", flexDirection: "column", alignItems: "center", gap: "15px" }}>
+            
+            {/* BOUTON APPEL (Même design que le bouton Devis, avec le tracker Google) */}
+            <a 
+              href="tel:+33776553370" 
+              className="btn" 
+              style={{ 
+                padding: "15px 40px", 
+                fontSize: "1.1rem",
+                width: "100%",
+                maxWidth: "320px",
+                textAlign: "center",
+                boxSizing: "border-box"
+              }}
+              onClick={(e) => {
+                console.log("Clic sur le bouton d'appel Hero détecté");
+                if (window.gtag) {
+                  window.gtag('event', 'conversion', {
+                    'send_to': 'AW-18085079647/vELTCOrkhpscEN_U0a9D',
+                    'event_callback': () => console.log("Signal de conversion envoyé à Google avec succès !")
+                  });
+                } else {
+                  console.warn("Attention : window.gtag n'est pas défini. Vérifiez index.html");
+                }
+              }}
+            >
+              Appeler pour un Devis Gratuit
+            </a>
+
+            <span style={{ 
+              fontSize: "0.9rem", 
+              fontWeight: "bold", 
+              opacity: 0.8, 
+              margin: "5px 0",
+              fontFamily: "sans-serif" 
+            }}>OU</span>
+
+            {/* BOUTON DEVIS EXISTANT */}
+            <Link 
+              to="/contact" 
+              className="btn" 
+              style={{ 
+                padding: "15px 40px", 
+                fontSize: "1.1rem",
+                width: "100%",
+                maxWidth: "320px",
+                textAlign: "center",
+                boxSizing: "border-box"
+              }}
+            >
+              Demander mon devis en ligne
+            </Link>
+            
           </div>
+
+          <p style={{ marginTop: "25px", fontSize: "1rem", color: "#c5a358", fontWeight: "bold" }}>
+            <span style={{ color: "#ffc107" }}>★★★★★</span> +50 clients satisfaits en 2025
+          </p>
         </div>
       </header>
 
@@ -165,28 +218,27 @@ export default function Home() {
         </div>
       </section>
 
-<a 
-  href="tel:+33776553370" 
-  className="floating-call" 
-  aria-label="Appeler DS Multiservices"
-  onClick={(e) => {
-    // Étape 1 : On vérifie dans la console que le clic fonctionne
-    console.log("Clic sur le bouton d'appel détecté");
+      <a 
+        href="tel:+33776553370" 
+        className="floating-call" 
+        aria-label="Appeler DS Multiservices"
+        onClick={(e) => {
+          console.log("Clic sur le bouton d'appel flottant détecté");
 
-    if (window.gtag) {
-      window.gtag('event', 'conversion', {
-        'send_to': 'AW-18085079647/vELTCOrkhpscEN_U0a9D',
-        'event_callback': () => console.log("Signal de conversion envoyé à Google avec succès !")
-      });
-    } else {
-      console.warn("Attention : window.gtag n'est pas défini. Vérifiez index.html");
-    }
-  }}
->
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-    <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
-  </svg>
-</a>
+          if (window.gtag) {
+            window.gtag('event', 'conversion', {
+              'send_to': 'AW-18085079647/vELTCOrkhpscEN_U0a9D',
+              'event_callback': () => console.log("Signal de conversion envoyé à Google avec succès !")
+            });
+          } else {
+            console.warn("Attention : window.gtag n'est pas défini. Vérifiez index.html");
+          }
+        }}
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
+        </svg>
+      </a>
     </div>
   );
 }
