@@ -45,7 +45,7 @@ export default function Home() {
         color: "white", textAlign: "center", padding: "160px 20px"
       }}>
         <div data-aos="fade-down">
-          <h1 style={{ fontSize: "clamp(2.5rem, 8vw, 4rem)", marginBottom: "15px", fontFamily: "'Playfair Display', serif", fontWeight: 900 }}>Espaces Verts & Élagage en Gironde</h1>
+          <h1 style={{ fontSize: "clamp(2.5rem, 8vw, 4rem)", marginBottom: "15px", fontFamily: "'Playfair Display', serif", fontWeight: 900 }}>Espaces Verts</h1>
           <p style={{ fontSize: "1.3rem", marginBottom: "40px", opacity: 0.9, maxWidth: "800px", margin: "0 auto 40px" }}>Intervention rapide & Urgence 7j/7. Devis Gratuit sous 48h à Bordeaux et alentours.</p>
           
           <div style={{ marginBottom: "20px", display: "flex", flexDirection: "column", alignItems: "center", gap: "15px" }}>
