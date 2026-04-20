@@ -23,7 +23,7 @@ export default function Home() {
     "Entretien jardin Bordeaux - DS Multiservices"
   ];
 
-  const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d181040.2335447781!2d-0.7428114671875024!3d44.84759600000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527e8f751ca3d%3A0x406651748138de0!2sBordeaux!5e0!3m2!1sfr!2sfr!4v1710434567890!5m2!1sfr!2sfr";
+  const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d181139.38072064563!2d-0.7516597793574136!3d44.86370643729864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527e8f751ca3d%3A0x406659744c33090!2sBordeaux!5e0!3m2!1sfr!2sfr!4v1710000000000!5m2!1sfr!2sfr";
 
   return (
     <div className="home-container" style={{ background: "#fdfdfd" }}>
@@ -36,6 +36,8 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://dsmultiservices.fr/logo-dsm.png" />
         <link rel="canonical" href="https://dsmultiservices.fr/" />
+        {/* Préchargement de l'image LCP pour la vitesse */}
+        <link rel="preload" as="image" href={imgaccueil} />
       </Helmet>
 
       <Navbar />
@@ -50,8 +52,6 @@ export default function Home() {
           <p style={{ fontSize: "1.3rem", marginBottom: "40px", opacity: 0.9, maxWidth: "800px", margin: "0 auto 40px" }}>Intervention rapide & Urgence 7j/7. Devis Gratuit sous 48h à Bordeaux et alentours.</p>
           
           <div style={{ marginBottom: "20px", display: "flex", flexDirection: "column", alignItems: "center", gap: "15px" }}>
-            
-            {/* BOUTON APPEL (Même design que le bouton Devis, avec le tracker Google) */}
             <a 
               href="tel:+33776553370" 
               className="btn" 
@@ -64,29 +64,19 @@ export default function Home() {
                 boxSizing: "border-box"
               }}
               onClick={(e) => {
-                console.log("Clic sur le bouton d'appel Hero détecté");
                 if (window.gtag) {
                   window.gtag('event', 'conversion', {
                     'send_to': 'AW-18085079647/vELTCOrkhpscEN_U0a9D',
-                    'event_callback': () => console.log("Signal de conversion envoyé à Google avec succès !")
+                    'event_callback': () => console.log("Signal envoyé")
                   });
-                } else {
-                  console.warn("Attention : window.gtag n'est pas défini. Vérifiez index.html");
                 }
               }}
             >
               Appeler pour un Devis Gratuit
             </a>
 
-            <span style={{ 
-              fontSize: "0.9rem", 
-              fontWeight: "bold", 
-              opacity: 0.8, 
-              margin: "5px 0",
-              fontFamily: "sans-serif" 
-            }}>OU</span>
+            <span style={{ fontSize: "0.9rem", fontWeight: "bold", opacity: 0.8, margin: "5px 0", fontFamily: "sans-serif" }}>OU</span>
 
-            {/* BOUTON DEVIS EXISTANT */}
             <Link 
               to="/contact" 
               className="btn" 
@@ -101,7 +91,6 @@ export default function Home() {
             >
               Demander mon devis en ligne
             </Link>
-            
           </div>
 
           <p style={{ marginTop: "25px", fontSize: "1rem", color: "#c5a358", fontWeight: "bold" }}>
@@ -112,23 +101,16 @@ export default function Home() {
 
       {/* --- TRUSTBAR --- */}
       <section style={{
-        background: "white",
-        padding: "40px 20px",
-        boxShadow: "0 15px 35px rgba(0,0,0,0.08)",
-        borderRadius: "15px",
-        maxWidth: "1100px",
-        margin: "-60px auto 60px auto",
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-        gap: "20px",
-        position: "relative",
-        zIndex: "10"
+        background: "white", padding: "40px 20px", boxShadow: "0 15px 35px rgba(0,0,0,0.08)",
+        borderRadius: "15px", maxWidth: "1100px", margin: "-60px auto 60px auto",
+        display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+        gap: "20px", position: "relative", zIndex: "10"
       }} data-aos="fade-up">
         {[
-          { label: "Assurance RC Pro", sub: "Travaux 100% sécurisés", icon: <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="#1a3c34"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> },
-          { label: "Devis sous 48h", sub: "Réactivité garantie", icon: <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="#1a3c34"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg> },
-          { label: "Chantier Propre", sub: "Évacuation des déchets", icon: <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="#1a3c34"><path d="M17 8C8 10 5.9 16.17 3.82 21H5.71C7.38 17.07 11.07 13 17 13v5l7-7-7-7v3z"/></svg> },
-          { label: "Expert Local", sub: "Basé en Gironde", icon: <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="#1a3c34"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> }
+          { label: "Assurance RC Pro", sub: "Travaux 100% sécurisés", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="#1a3c34"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> },
+          { label: "Devis sous 48h", sub: "Réactivité garantie", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="#1a3c34"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg> },
+          { label: "Chantier Propre", sub: "Évacuation des déchets", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="#1a3c34"><path d="M17 8C8 10 5.9 16.17 3.82 21H5.71C7.38 17.07 11.07 13 17 13v5l7-7-7-7v3z"/></svg> },
+          { label: "Expert Local", sub: "Basé en Gironde", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="#1a3c34"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> }
         ].map((item, i, arr) => (
           <div key={i} style={{ textAlign: "center", borderRight: i < arr.length - 1 ? "1px solid #f0f0f0" : "none" }}>
             <div style={{ marginBottom: "10px" }}>{item.icon}</div>
@@ -146,16 +128,7 @@ export default function Home() {
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "30px", justifyContent: "center" }}>
           {services.map((s, index) => (
-            <div key={s.title}
-                 data-aos="fade-up"
-                 data-aos-delay={index * 100}
-                 data-aos-duration="400"
-                 className="card-hover"
-                 style={{
-                   padding: "40px", width: "280px", textAlign: "center",
-                   backgroundColor: "#fff", borderBottom: "4px solid #c5a358",
-                   boxShadow: "0 5px 15px rgba(0,0,0,0.02)"
-                 }}>
+            <div key={s.title} data-aos="fade-up" data-aos-delay={index * 100} style={{ padding: "40px", width: "280px", textAlign: "center", backgroundColor: "#fff", borderBottom: "4px solid #c5a358", boxShadow: "0 5px 15px rgba(0,0,0,0.02)" }}>
               <h3 style={{ color: "#c5a358", marginBottom: "15px", fontSize: "1.4rem" }}>{s.title}</h3>
               <p style={{ color: "#666", fontSize: "0.95rem", lineHeight: "1.6" }}>{s.desc}</p>
             </div>
@@ -166,51 +139,29 @@ export default function Home() {
       {/* --- GALERIE --- */}
       <section style={{ padding: "80px 20px", textAlign: "center", background: "#f4f7f6" }}>
         <h2 data-aos="fade-up" style={{ color: "#1a3c34", fontSize: "2.5rem", marginBottom: "15px", fontFamily: "'Playfair Display', serif" }}>Derniers Chantiers</h2>
-        <p style={{ color: "#777", marginBottom: "40px" }}>Aperçu de nos interventions récentes en Gironde</p>
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: "20px",
-          maxWidth: "1100px",
-          margin: "0 auto 50px auto"
-        }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "20px", maxWidth: "1100px", margin: "0 auto 50px auto" }}>
           {galleryPreview.map((url, i) => (
-            <div key={i} data-aos="zoom-in" data-aos-delay={i * 200} style={{ height: "250px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 10px 20px rgba(0,0,0,0.1)" }}>
-              <img src={url} alt={galleryAlt[i]} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <div key={i} data-aos="zoom-in" data-aos-delay={i * 200} style={{ height: "250px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 10px 20px rgba(0,0,0,0.1)", background: "#eee" }}>
+              <img 
+                src={url} 
+                alt={galleryAlt[i]} 
+                loading="lazy" 
+                width="400" 
+                height="250" 
+                style={{ width: "100%", height: "100%", objectFit: "cover" }} 
+              />
             </div>
           ))}
         </div>
-        <Link
-          to="/galerie"
-          className="btn"
-          style={{
-            background: "#1a3c34",
-            color: "#ffffff",
-            border: "none",
-            display: "inline-block",
-            boxShadow: "0 10px 20px rgba(26, 60, 52, 0.15)"
-          }}
-          onMouseOver={(e) => e.currentTarget.style.background = "#c5a358"}
-          onMouseOut={(e) => e.currentTarget.style.background = "#1a3c34"}
-        >
-          Voir toutes nos réalisations
-        </Link>
+        <Link to="/galerie" className="btn" style={{ background: "#1a3c34", color: "#ffffff" }}>Voir toutes nos réalisations</Link>
       </section>
 
       {/* --- CARTE --- */}
       <section style={{ padding: "100px 0", background: "white" }}>
         <div className="container" data-aos="zoom-in">
-          <div style={{ textAlign: "center", marginBottom: "50px", padding: "0 20px" }}>
-            <h2 style={{ fontSize: "2.5rem", color: "#1a3c34", fontFamily: "'Playfair Display', serif" }}>Zone d'intervention</h2>
-            <p style={{ color: "#666", marginTop: "10px" }}>Nous nous déplaçons gratuitement dans toute la Gironde (33).</p>
-          </div>
-          <div style={{
-            maxWidth: "1100px", margin: "0 auto", height: "450px",
-            borderRadius: "24px", overflow: "hidden",
-            boxShadow: "0 25px 50px rgba(0,0,0,0.12)", border: "12px solid white"
-          }}>
+          <div style={{ maxWidth: "1100px", margin: "0 auto", height: "450px", borderRadius: "24px", overflow: "hidden", boxShadow: "0 25px 50px rgba(0,0,0,0.12)", border: "12px solid white", background: "#f0f0f0" }}>
             <iframe
-              title="Carte zone d'intervention DS Multiservices - Bordeaux Gironde"
+              title="Carte zone d'intervention"
               src={mapUrl}
               width="100%" height="100%" style={{ border: 0 }}
               allowFullScreen="" loading="lazy"
@@ -219,26 +170,9 @@ export default function Home() {
         </div>
       </section>
 
-      <a 
-        href="tel:+33776553370" 
-        className="floating-call" 
-        aria-label="Appeler DS Multiservices"
-        onClick={(e) => {
-          console.log("Clic sur le bouton d'appel flottant détecté");
-
-          if (window.gtag) {
-            window.gtag('event', 'conversion', {
-              'send_to': 'AW-18085079647/vELTCOrkhpscEN_U0a9D',
-              'event_callback': () => console.log("Signal de conversion envoyé à Google avec succès !")
-            });
-          } else {
-            console.warn("Attention : window.gtag n'est pas défini. Vérifiez index.html");
-          }
-        }}
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/>
-        </svg>
+      {/* BOUTON FLOTTANT */}
+      <a href="tel:+33776553370" className="floating-call" aria-label="Appeler DS Multiservices">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
       </a>
     </div>
   );
