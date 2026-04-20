@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import imgaccueil from "../assets/gallery/acceuil.webp";
-import imageaccueil2 from "../assets/gallery/accueil2.webp";
 import imgaccueil3 from "../assets/gallery/accueil3.webp";
 import imgjardin from "../assets/gallery/avant-apres-jardin.webp";
 import imgserre from "../assets/gallery/avant-apres-serre.webp";
