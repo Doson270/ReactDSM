@@ -40,7 +40,7 @@ export default function Avis() {
       </Helmet>
       <Navbar />
 
-      <header data-aos="fade" className="hero-section" style={{ background: "linear-gradient(rgba(26,60,52,0.9), rgba(26,60,52,0.9)), url('https://images.unsplash.com/photo-1557429287-b2e26467fc2b?q=80&w=2000') center/cover", color: "white", textAlign: "center", padding: "100px 20px" }}>
+      <header data-aos="fade" className="hero-section-avis" style={{ background: "linear-gradient(rgba(26, 62, 54, 0.9), rgba(26,60,52,0.9)), url('https://images.unsplash.com/photo-1557429287-b2e26467fc2b?q=80&w=2000') center/cover", color: "white", textAlign: "center", padding: "100px 20px" }}>
         <h1 style={{ fontSize: "3rem" }}>Avis Clients - Élagage & Jardinage à Bordeaux</h1>
         <p>L'excellence confirmée par nos clients en Gironde</p>
       </header>
