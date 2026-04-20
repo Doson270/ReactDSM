@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import imgaccueil from "../assets/gallery/acceuil.webp";
 import imageaccueil2 from "../assets/gallery/accueil2.webp";
 import imgaccueil3 from "../assets/gallery/accueil3.webp";
+import imgjardin from "../assets/gallery/avant-apres-jardin.webp";
+import imgserre from "../assets/gallery/avant-apres-serre.webp";
 
 export default function Home() {
   const services = [
@@ -14,7 +16,7 @@ export default function Home() {
     { title: "Entretien Parcs", desc: "Gestion complète de vos espaces verts et évacuation des déchets." }
   ];
 
-  const galleryPreview = [imgaccueil, imageaccueil2, imgaccueil3];
+  const galleryPreview = [imgjardin, imgserre, imgaccueil3];
 
   const galleryAlt = [
     "Élagage d'arbres à Bordeaux - DS Multiservices",
