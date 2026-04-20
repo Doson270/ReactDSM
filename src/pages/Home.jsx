@@ -23,7 +23,8 @@ export default function Home() {
     "Entretien jardin Bordeaux - DS Multiservices"
   ];
 
-  const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2025.0571386885324!2d-0.4616289252390526!3d44.97244266611727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd552d007d27fe2b%3A0xe016444afb83cf1e!2sDSMultiservices!5e1!3m2!1sfr!2sfr!4v1776709292967!5m2!1sfr!2sfr"
+  const mapUrl = "http://googleusercontent.com/maps.google.com/9";
+
   return (
     <div className="home-container" style={{ background: "#fdfdfd" }}>
       <Helmet>
@@ -35,18 +36,39 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://dsmultiservices.fr/logo-dsm.png" />
         <link rel="canonical" href="https://dsmultiservices.fr/" />
-        {/* Préchargement de l'image LCP pour la vitesse */}
-        <link rel="preload" as="image" href={imgaccueil} />
+        {/* Préchargement critique pour le score LCP */}
+        <link rel="preload" as="image" href={imgaccueil} fetchpriority="high" />
       </Helmet>
 
       <Navbar />
 
-      {/* --- HERO SECTION --- */}
+      {/* --- HERO SECTION OPTIMISÉE --- */}
       <header className="hero-section" style={{
-        background: `linear-gradient(rgba(26,60,52,0.7), rgba(26,60,52,0.7)), url(${imgaccueil}) center/cover`,
-        color: "white", textAlign: "center", padding: "160px 20px"
+        position: "relative",
+        color: "white",
+        textAlign: "center",
+        padding: "160px 20px",
+        backgroundColor: "#1a3c34", // Couleur de fond en attendant l'image
+        overflow: "hidden"
       }}>
-        <div data-aos="fade-down">
+        {/* Image LCP forcée en priorité haute */}
+        <img 
+          src={imgaccueil} 
+          alt="" 
+          fetchpriority="high"
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            zIndex: 1,
+            opacity: 0.3 // Simule le filtre linear-gradient
+          }}
+        />
+
+        <div data-aos="fade-down" style={{ position: "relative", zIndex: 2 }}>
           <h1 style={{ fontSize: "clamp(2.5rem, 8vw, 4rem)", marginBottom: "15px", fontFamily: "'Playfair Display', serif", fontWeight: 900 }}>Espaces Verts</h1>
           <p style={{ fontSize: "1.3rem", marginBottom: "40px", opacity: 0.9, maxWidth: "800px", margin: "0 auto 40px" }}>Intervention rapide & Urgence 7j/7. Devis Gratuit sous 48h à Bordeaux et alentours.</p>
           
@@ -54,20 +76,10 @@ export default function Home() {
             <a 
               href="tel:+33776553370" 
               className="btn" 
-              style={{ 
-                padding: "15px 40px", 
-                fontSize: "1.1rem",
-                width: "100%",
-                maxWidth: "320px",
-                textAlign: "center",
-                boxSizing: "border-box"
-              }}
-              onClick={(e) => {
+              style={{ padding: "15px 40px", fontSize: "1.1rem", width: "100%", maxWidth: "320px", textAlign: "center", boxSizing: "border-box" }}
+              onClick={() => {
                 if (window.gtag) {
-                  window.gtag('event', 'conversion', {
-                    'send_to': 'AW-18085079647/vELTCOrkhpscEN_U0a9D',
-                    'event_callback': () => console.log("Signal envoyé")
-                  });
+                  window.gtag('event', 'conversion', { 'send_to': 'AW-18085079647/vELTCOrkhpscEN_U0a9D' });
                 }
               }}
             >
@@ -79,14 +91,7 @@ export default function Home() {
             <Link 
               to="/contact" 
               className="btn" 
-              style={{ 
-                padding: "15px 40px", 
-                fontSize: "1.1rem",
-                width: "100%",
-                maxWidth: "320px",
-                textAlign: "center",
-                boxSizing: "border-box"
-              }}
+              style={{ padding: "15px 40px", fontSize: "1.1rem", width: "100%", maxWidth: "320px", textAlign: "center", boxSizing: "border-box" }}
             >
               Demander mon devis en ligne
             </Link>
@@ -111,7 +116,7 @@ export default function Home() {
           { label: "Chantier Propre", sub: "Évacuation des déchets", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="#1a3c34"><path d="M17 8C8 10 5.9 16.17 3.82 21H5.71C7.38 17.07 11.07 13 17 13v5l7-7-7-7v3z"/></svg> },
           { label: "Expert Local", sub: "Basé en Gironde", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="#1a3c34"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> }
         ].map((item, i, arr) => (
-          <div key={i} style={{ textAlign: "center", borderRight: i < arr.length - 1 ? "1px solid #f0f0f0" : "none" }}>
+          <div key={i} style={{ textAlign: "center", borderRight: i < arr.length - 1 && window.innerWidth > 768 ? "1px solid #f0f0f0" : "none" }}>
             <div style={{ marginBottom: "10px" }}>{item.icon}</div>
             <h4 style={{ margin: "0", color: "#1a3c34", fontSize: "1.1rem", fontWeight: "700" }}>{item.label}</h4>
             <p style={{ fontSize: "0.85rem", color: "#777", marginTop: "5px" }}>{item.sub}</p>
@@ -163,7 +168,9 @@ export default function Home() {
               title="Carte zone d'intervention"
               src={mapUrl}
               width="100%" height="100%" style={{ border: 0 }}
-              allowFullScreen="" loading="lazy"
+              allowFullScreen="" 
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
         </div>
@@ -175,4 +182,4 @@ export default function Home() {
       </a>
     </div>
   );
-} 
+}
