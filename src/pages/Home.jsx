@@ -23,7 +23,7 @@ export default function Home() {
     "Entretien jardin Bordeaux - DS Multiservices"
   ];
 
-  const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d181139.38072064563!2d-0.7516597793574136!3d44.86370643729864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527e8f751ca3d%3A0x406659744c33090!2sBordeaux!5e0!3m2!1sfr!2sfr!4v1710000000000!5m2!1sfr!2sfr";
+  const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d261210.15213345585!2d-0.9569462038645284!3d44.86043771321927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527e8f751ca81%3A0x796386037b397a89!2sBordeaux!5e1!3m2!1sfr!2sfr!4v1776709007150!5m2!1sfr!2sfr";
 
   return (
     <div className="home-container" style={{ background: "#fdfdfd" }}>
