@@ -1,8 +1,6 @@
 /* =========================================
-   VARIABLES & POLICES (Luxe & Premium)
+   VARIABLES & CONFIGURATION
    ========================================= */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;700&display=swap');
-
 :root {
   --primary: #1a3c34;    /* Vert Forêt profond */
   --accent: #c5a358;     /* Or Sablé */
@@ -12,17 +10,19 @@
   --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Correctif indispensable pour les animations AOS */
+/* Correctif pour les animations et performance */
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden; /* Empêche le bug du scroll horizontal pendant les animations */
+  overflow-x: hidden;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  /* Ajout de polices de secours pour éviter le blocage */
+  font-family: 'Inter', -apple-system, sans-serif;
   background-color: var(--bg-light);
   color: var(--text-dark);
   line-height: 1.6;
@@ -31,6 +31,11 @@ body {
 h1, h2, h3, h4 {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
+}
+
+/* Suppression du doublon d'image Hero dans le CSS */
+.hero-section {
+  background-image: none !important;
 }
 
 /* Couleurs des liens */
@@ -72,7 +77,6 @@ a:hover {
   font-weight: 300;
 }
 
-/* Menu Desktop */
 .nav-links {
   display: flex;
   list-style: none;
@@ -92,7 +96,6 @@ a:hover {
   font-weight: 700;
 }
 
-/* Burger Mobile */
 .burger {
   display: none;
   flex-direction: column;
@@ -128,13 +131,8 @@ a:hover {
   }
 
   .nav-links.open { transform: translateX(0); }
-  
   .nav-links li { margin: 20px 0; }
-  
-  .nav-links li a {
-    color: var(--white) !important;
-    font-size: 1.5rem;
-  }
+  .nav-links li a { color: var(--white) !important; font-size: 1.5rem; }
 
   .burger.toggle .line1 { transform: rotate(-45deg) translate(-6px, 6px); background-color: var(--white); }
   .burger.toggle .line2 { opacity: 0; }
@@ -142,7 +140,7 @@ a:hover {
 }
 
 /* =========================================
-   COMPOSANTS GÉNÉRAUX (Boutons, Cartes)
+   BOUTONS (Le retour !)
    ========================================= */
 .btn {
   background: var(--accent);
@@ -165,6 +163,9 @@ a:hover {
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
+/* =========================================
+   CARTES & FORMULAIRES
+   ========================================= */
 .card-hover {
   background: var(--white);
   border-radius: 12px;
@@ -177,9 +178,6 @@ a:hover {
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
-/* =========================================
-   FORMULAIRES PREMIUM
-   ========================================= */
 .premium-form input, 
 .premium-form textarea, 
 .premium-form select {
@@ -202,13 +200,11 @@ a:hover {
 
 /* Loader d'envoi */
 .loader {
-  width: 18px;
-  height: 18px;
+  width: 18px; height: 18px;
   border: 2px solid #FFF;
   border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;
-  box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
 
@@ -218,7 +214,7 @@ a:hover {
 }
 
 /* =========================================
-   FOOTER
+   FOOTER & BOUTON FLOTTANT
    ========================================= */
 .main-footer {
   background: var(--primary);
@@ -234,20 +230,9 @@ a:hover {
   margin: 0 auto;
 }
 
-.footer-section h4 {
-  color: var(--accent);
-  font-size: 1.4rem;
-  margin-bottom: 20px;
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section ul li {
-  margin-bottom: 12px;
-}
+.footer-section h4 { color: var(--accent); font-size: 1.4rem; margin-bottom: 20px; }
+.footer-section ul { list-style: none; padding: 0; }
+.footer-section ul li { margin-bottom: 12px; }
 
 .footer-bottom {
   text-align: center;
@@ -258,9 +243,6 @@ a:hover {
   opacity: 0.7;
 }
 
-/* =========================================
-   BOUTON D'APPEL FLOTTANT (FIXÉ & DORÉ)
-   ========================================= */
 .floating-call {
   position: fixed;
   bottom: 30px;
@@ -271,23 +253,14 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
-  
-  /* Couleurs */
-  background-color: var(--accent) !important; /* Toujours Doré */
+  background-color: var(--accent) !important;
   color: white !important;
-  font-size: 26px;
-  
-  /* Ombre et profondeur */
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   z-index: 9999;
-  
-  /* Animation */
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .floating-call:hover {
-  transform: scale(1.15); /* Grossit légèrement */
-  background-color: var(--accent) !important; /* Reste doré au survol */
-  box-shadow: 0 15px 30px rgba(197, 163, 88, 0.4); /* Halo doré au survol */
+  transform: scale(1.15);
+  box-shadow: 0 15px 30px rgba(197, 163, 88, 0.4);
 }

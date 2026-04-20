@@ -37,7 +37,7 @@ export default function Home() {
         <meta property="og:image" content="https://dsmultiservices.fr/logo-dsm.png" />
         <link rel="canonical" href="https://dsmultiservices.fr/" />
         {/* Préchargement critique pour le score LCP */}
-        <link rel="preload" as="image" href={imgaccueil} fetchpriority="high" />
+        <link rel="preload" as="image" href={imgaccueil} fetchPriority="high" />
       </Helmet>
 
       <Navbar />
@@ -55,7 +55,7 @@ export default function Home() {
         <img 
           src={imgaccueil} 
           alt="" 
-          fetchpriority="high"
+          fetchPriority="high"
           style={{
             position: "absolute",
             top: 0,
