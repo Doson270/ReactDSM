@@ -10,22 +10,25 @@ import tailledehaie from "../assets/gallery/taille-de-haie.webp"
 
 export default function Home() {
   const services = [
-    { title: "Élagage & Taille", desc: "Taille de restructuration, mise en sécurité et soins aux arbres." },
-    { title: "Abattage Délicat", desc: "Démontage d'arbres dangereux avec rétention en zones urbaines." },
-    { title: "Taille de Haies", desc: "Entretien régulier pour des clôtures végétales denses et esthétiques." },
-    { title: "Entretien Parcs", desc: "Gestion complète de vos espaces verts et évacuation des déchets." }
+    { title: "Élagage & Taille", desc: "Taille de restructuration, mise en sécurité et soins aux arbres. Nous intervenons sur tous types d'arbres pour préserver leur santé et votre sécurité à Bordeaux et en Gironde." },
+    { title: "Abattage Délicat", desc: "Démontage d'arbres dangereux avec rétention en zones urbaines. Notre équipe gère l'abattage d'arbres en toute sécurité, même dans des espaces contraints." },
+    { title: "Taille de Haies", desc: "Entretien régulier pour des clôtures végétales denses et esthétiques. Taille de haies de toutes essences à Bordeaux, Mérignac, Pessac et alentours." },
+    { title: "Entretien Parcs", desc: "Gestion complète de vos espaces verts et évacuation des déchets verts incluse. Interventions régulières pour particuliers et professionnels en Gironde." }
   ];
 
   const galleryPreview = [imgjardin, imgarbre, tailledehaie];
 
   const galleryAlt = [
-    "Élagage & abattage                       d'arbres à Bordeaux - DS Multiservices",
+    "Élagage & abattage d'arbres à Bordeaux - DS Multiservices",
     "Taille de haies en Gironde - DS Multiservices",
     "Entretien jardin Bordeaux - DS Multiservices"
   ];
 
-  const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d343242.79754964676!2d-0.8946271602334462!3d44.82452951171848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd552d007d27fe2b%3A0xe016444afb83cf1e!2sDSMultiservices!5e1!3m2!1sfr!2sfr!4v1776710502274!5m2!1sfr!2sfr";
-
+  const temoignages = [
+    { nom: "Jean-Pierre M.", ville: "Bordeaux", note: "★★★★★", texte: "Intervention rapide pour l'abattage d'un grand pin dangereux. Travail soigné, chantier propre. Je recommande vivement DS Multiservices." },
+    { nom: "Sophie L.", ville: "Mérignac", note: "★★★★★", texte: "Excellente taille de haies, devis reçu en 24h et équipe très professionnelle. Prix honnête pour la qualité du travail rendu." },
+    { nom: "Marc D.", ville: "Pessac", note: "★★★★★", texte: "Élagage de plusieurs arbres dans mon jardin. Résultat impeccable, équipe sérieuse et ponctuelle. Merci DS Multiservices !" }
+  ];
   return (
     <div className="home-container" style={{ background: "#fdfdfd" }}>
       <Helmet>
@@ -37,46 +40,43 @@ export default function Home() {
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://dsmultiservices.fr/logo-dsm.png" />
         <link rel="canonical" href="https://dsmultiservices.fr/" />
-        {/* Préchargement critique pour le score LCP */}
         <link rel="preload" as="image" href={imgaccueil} fetchPriority="high" />
       </Helmet>
 
       <Navbar />
 
-      {/* --- HERO SECTION OPTIMISÉE --- */}
+      {/* --- HERO SECTION --- */}
       <header className="hero-section" style={{
         position: "relative",
         color: "white",
         textAlign: "center",
         padding: "160px 20px",
-        backgroundColor: "#1a3c34", // Couleur de fond en attendant l'image
+        backgroundColor: "#1a3c34",
         overflow: "hidden"
       }}>
-        {/* Image LCP forcée en priorité haute */}
-        <img 
-          src={imgaccueil} 
-          alt="" 
+        <img
+          src={imgaccueil}
+          alt=""
           fetchPriority="high"
           style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            zIndex: 1,
-            opacity: 0.3 // Simule le filtre linear-gradient
+            position: "absolute", top: 0, left: 0,
+            width: "100%", height: "100%",
+            objectFit: "cover", zIndex: 1, opacity: 0.3
           }}
         />
 
         <div data-aos="fade-down" style={{ position: "relative", zIndex: 2 }}>
-          <h1 style={{ fontSize: "clamp(2.5rem, 8vw, 4rem)", marginBottom: "15px", fontFamily: "'Playfair Display', serif", fontWeight: 900 }}>Elagage Abattage & Taille de Haie</h1>
-          <p style={{ fontSize: "1.3rem", marginBottom: "40px", opacity: 0.9, maxWidth: "800px", margin: "0 auto 40px" }}>Intervention rapide & Urgence 7j/7. Devis Gratuit sous 48h à Bordeaux et alentours.</p>
-          
+          <h1 style={{ fontSize: "clamp(2.5rem, 8vw, 4rem)", marginBottom: "15px", fontFamily: "'Playfair Display', serif", fontWeight: 900 }}>
+            Elagage Abattage & Taille de Haie
+          </h1>
+          <p style={{ fontSize: "1.3rem", marginBottom: "40px", opacity: 0.9, maxWidth: "800px", margin: "0 auto 40px" }}>
+            Intervention rapide & Urgence 7j/7. Devis Gratuit sous 48h à Bordeaux et alentours.
+          </p>
+
           <div style={{ marginBottom: "20px", display: "flex", flexDirection: "column", alignItems: "center", gap: "15px" }}>
-            <a 
-              href="tel:+33776553370" 
-              className="btn" 
+            <a
+              href="tel:+33776553370"
+              className="btn"
               style={{ padding: "15px 40px", fontSize: "1.1rem", width: "100%", maxWidth: "320px", textAlign: "center", boxSizing: "border-box" }}
               onClick={() => {
                 if (window.gtag) {
@@ -89,9 +89,9 @@ export default function Home() {
 
             <span style={{ fontSize: "0.9rem", fontWeight: "bold", opacity: 0.8, margin: "5px 0", fontFamily: "sans-serif" }}>OU</span>
 
-            <Link 
-              to="/contact" 
-              className="btn" 
+            <Link
+              to="/contact"
+              className="btn"
               style={{ padding: "15px 40px", fontSize: "1.1rem", width: "100%", maxWidth: "320px", textAlign: "center", boxSizing: "border-box" }}
             >
               Demander mon devis en ligne
@@ -125,6 +125,42 @@ export default function Home() {
         ))}
       </section>
 
+      {/* --- BLOC TEXTE SEO (NOUVEAU) --- */}
+      <section data-aos="fade-up" style={{ padding: "60px 20px", maxWidth: "900px", margin: "0 auto 20px auto" }}>
+        <h2 style={{ color: "#1a3c34", fontFamily: "'Playfair Display', serif", fontSize: "2rem", marginBottom: "20px", textAlign: "center" }}>
+          Élagueur professionnel à Bordeaux & en Gironde
+        </h2>
+        <div style={{ width: "60px", height: "4px", background: "#c5a358", margin: "0 auto 30px auto" }}></div>
+        <p style={{ color: "#555", fontSize: "1.05rem", lineHeight: "1.9", marginBottom: "20px" }}>
+          DS Multiservices est votre expert en <strong>élagage, abattage d'arbres et taille de haies à Bordeaux</strong> et dans toute la Gironde (33).
+          Que vous ayez besoin d'un <strong>élagueur à Bordeaux</strong> pour un arbre dangereux, d'un <strong>abattage délicat</strong> en zone urbaine
+          ou d'une <strong>taille de haies</strong> régulière, notre équipe intervient rapidement sur votre chantier avec tout le matériel nécessaire.
+        </p>
+        <p style={{ color: "#555", fontSize: "1.05rem", lineHeight: "1.9", marginBottom: "20px" }}>
+          Nous réalisons des <strong>devis élagage gratuits sous 48h</strong> pour tous vos travaux arboricoles à Bordeaux, Mérignac, Pessac,
+          Talence, Bègles, Villenave-d'Ornon, Gradignan, Mérignac et dans l'ensemble du département 33.
+          Nos interventions sont couvertes par une <strong>assurance RC Pro</strong> et nous assurons l'évacuation complète des déchets verts.
+        </p>
+        <p style={{ color: "#555", fontSize: "1.05rem", lineHeight: "1.9" }}>
+          Urgence <strong>abattage élagage</strong> ? Nous sommes disponibles <strong>7j/7</strong> pour intervenir rapidement.
+          Appelez-nous dès maintenant pour un devis gratuit et sans engagement.
+        </p>
+        <div style={{ textAlign: "center", marginTop: "35px" }}>
+          <a
+            href="tel:+33776553370"
+            className="btn"
+            style={{ padding: "15px 40px", fontSize: "1rem" }}
+            onClick={() => {
+              if (window.gtag) {
+                window.gtag('event', 'conversion', { 'send_to': 'AW-18085079647/vELTCOrkhpscEN_U0a9D' });
+              }
+            }}
+          >
+            Appeler pour un Devis Gratuit
+          </a>
+        </div>
+      </section>
+
       {/* --- SERVICES --- */}
       <section style={{ padding: "80px 20px", maxWidth: "1200px", margin: "auto" }}>
         <div style={{ textAlign: "center", marginBottom: "60px" }}>
@@ -144,16 +180,19 @@ export default function Home() {
       {/* --- GALERIE --- */}
       <section style={{ padding: "80px 20px", textAlign: "center", background: "#f4f7f6" }}>
         <h2 data-aos="fade-up" style={{ color: "#1a3c34", fontSize: "2.5rem", marginBottom: "15px", fontFamily: "'Playfair Display', serif" }}>Derniers Chantiers</h2>
+        <p style={{ color: "#666", maxWidth: "600px", margin: "0 auto 40px auto", fontSize: "1rem" }}>
+          Élagage, abattage et taille de haies réalisés à Bordeaux et en Gironde par notre équipe.
+        </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "20px", maxWidth: "1100px", margin: "0 auto 50px auto" }}>
           {galleryPreview.map((url, i) => (
             <div key={i} data-aos="zoom-in" data-aos-delay={i * 200} style={{ height: "250px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 10px 20px rgba(0,0,0,0.1)", background: "#eee" }}>
-              <img 
-                src={url} 
-                alt={galleryAlt[i]} 
-                loading="lazy" 
-                width="400" 
-                height="250" 
-                style={{ width: "100%", height: "100%", objectFit: "cover" }} 
+              <img
+                src={url}
+                alt={galleryAlt[i]}
+                loading="lazy"
+                width="400"
+                height="250"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
             </div>
           ))}
@@ -161,42 +200,96 @@ export default function Home() {
         <Link to="/galerie" className="btn" style={{ background: "#1a3c34", color: "#ffffff" }}>Voir toutes nos réalisations</Link>
       </section>
 
+      {/* --- TÉMOIGNAGES (NOUVEAU) --- */}
+      <section style={{ padding: "80px 20px", background: "white" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto", textAlign: "center" }}>
+          <h2 data-aos="fade-up" style={{ color: "#1a3c34", fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", marginBottom: "15px" }}>
+            Ce que disent nos clients
+          </h2>
+          <div style={{ width: "60px", height: "4px", background: "#c5a358", margin: "0 auto 50px auto" }}></div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "30px" }}>
+            {temoignages.map((t, i) => (
+              <div key={i} data-aos="fade-up" data-aos-delay={i * 100} style={{
+                background: "#f4f7f6", borderRadius: "12px", padding: "35px 30px",
+                textAlign: "left", borderBottom: "4px solid #c5a358"
+              }}>
+                <p style={{ color: "#ffc107", fontSize: "1.2rem", marginBottom: "12px" }}>{t.note}</p>
+                <p style={{ color: "#555", fontSize: "0.95rem", lineHeight: "1.7", marginBottom: "20px", fontStyle: "italic" }}>
+                  "{t.texte}"
+                </p>
+                <p style={{ color: "#1a3c34", fontWeight: "700", fontSize: "0.9rem", margin: 0 }}>
+                  {t.nom} — <span style={{ color: "#c5a358" }}>{t.ville}</span>
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- FAQ SEO (NOUVEAU) --- */}
+      <section style={{ padding: "80px 20px", background: "#f4f7f6" }}>
+        <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+          <h2 data-aos="fade-up" style={{ color: "#1a3c34", fontFamily: "'Playfair Display', serif", fontSize: "2.2rem", marginBottom: "15px", textAlign: "center" }}>
+            Questions fréquentes
+          </h2>
+          <div style={{ width: "60px", height: "4px", background: "#c5a358", margin: "0 auto 50px auto" }}></div>
+          {[
+            {
+              q: "Intervenez-vous en urgence pour l'abattage d'un arbre dangereux ?",
+              r: "Oui, DS Multiservices intervient 7j/7 pour tout abattage d'arbre en urgence à Bordeaux et en Gironde. Contactez-nous par téléphone pour une intervention rapide."
+            },
+            {
+              q: "Quel est le prix d'un élagage à Bordeaux ?",
+              r: "Le tarif d'un élagage dépend de la taille de l'arbre, de l'accessibilité et du type de travaux. Nous proposons un devis élagage gratuit sous 48h, sans engagement."
+            },
+            {
+              q: "Dans quelles communes intervenez-vous ?",
+              r: "Nous intervenons à Bordeaux et dans toute la Gironde : Mérignac, Pessac, Talence, Bègles, Gradignan, Villenave-d'Ornon, Le Bouscat, Bruges, Eysines et alentours."
+            },
+            {
+              q: "La taille de haies est-elle incluse dans vos services ?",
+              r: "Oui, nous proposons la taille de haies pour particuliers et professionnels en Gironde. Nous gérons toutes les essences et assurons l'évacuation des déchets verts."
+            }
+          ].map((item, i) => (
+            <div key={i} data-aos="fade-up" style={{ marginBottom: "25px", background: "white", borderRadius: "10px", padding: "25px 30px", boxShadow: "0 3px 10px rgba(0,0,0,0.04)" }}>
+              <h3 style={{ color: "#1a3c34", fontSize: "1.05rem", marginBottom: "10px", fontFamily: "'Playfair Display', serif" }}>{item.q}</h3>
+              <p style={{ color: "#666", margin: 0, fontSize: "0.95rem", lineHeight: "1.7" }}>{item.r}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* --- CARTE --- */}
-{/* --- CARTE (VERSION OPTIMISÉE) --- */}
-<section style={{ padding: "80px 20px", background: "white" }}>
-  <div style={{ maxWidth: "1100px", margin: "0 auto", textAlign: "center" }}>
-    <h2 style={{ color: "#1a3c34", marginBottom: "30px", fontFamily: "'Playfair Display', serif" }}>Zone d'intervention : Bordeaux & Gironde</h2>
-    
-    <a 
-      href="https://www.google.com/maps/place/DSMultiservices/@44.9549377,-0.4702343,88900m/data=!3m1!1e3!4m14!1m7!3m6!1s0xd552d007d27fe2b:0xe016444afb83cf1e!2sDSMultiservices!8m2!3d44.9724389!4d-0.459054!16s%2Fg%2F11w41x9zt4!3m5!1s0xd552d007d27fe2b:0xe016444afb83cf1e!8m2!3d44.9724389!4d-0.459054!16s%2Fg%2F11w41x9zt4?entry=ttu&g_ep=EgoyMDI2MDQyMC4wIKXMDSoASAFQAw%3D%3D" 
-      target="_blank" 
-      rel="noopener noreferrer"
-      style={{ display: "block", position: "relative", borderRadius: "20px", overflow: "hidden", boxShadow: "0 15px 30px rgba(0,0,0,0.1)" }}
-    >
-      {/* Utilise ici ta capture d'écran optimisée en WebP */}
-      <img 
-        src={imgmap} 
-        alt="Zone d'intervention DS Multiservices Bordeaux" 
-        style={{ width: "100%", height: "auto", display: "block" }}
-        loading="lazy"
-      />
-      <div style={{
-        position: "absolute",
-        bottom: "20px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        background: "rgba(26, 60, 52, 0.9)",
-        color: "white",
-        padding: "10px 20px",
-        borderRadius: "50px",
-        fontSize: "0.9rem",
-        fontWeight: "bold"
-      }}>
-        Cliquez pour voir l'itinéraire
-      </div>
-    </a>
-  </div>
-</section>
+      <section style={{ padding: "80px 20px", background: "white" }}>
+        <div style={{ maxWidth: "1100px", margin: "0 auto", textAlign: "center" }}>
+          <h2 style={{ color: "#1a3c34", marginBottom: "15px", fontFamily: "'Playfair Display', serif", fontSize: "2.2rem" }}>
+            Zone d'intervention : Bordeaux & Gironde
+          </h2>
+          <p style={{ color: "#666", maxWidth: "600px", margin: "0 auto 30px auto", fontSize: "1rem" }}>
+            Élagueur basé en Gironde, nous intervenons rapidement sur Bordeaux et toute la métropole bordelaise pour vos travaux d'élagage, abattage et taille de haies.
+          </p>
+          <a
+            href="https://www.google.com/maps/place/DSMultiservices/@44.9549377,-0.4702343,88900m/data=!3m1!1e3!4m14!1m7!3m6!1s0xd552d007d27fe2b:0xe016444afb83cf1e!2sDSMultiservices!8m2!3d44.9724389!4d-0.459054!16s%2Fg%2F11w41x9zt4!3m5!1s0xd552d007d27fe2b:0xe016444afb83cf1e!8m2!3d44.9724389!4d-0.459054!16s%2Fg%2F11w41x9zt4?entry=ttu&g_ep=EgoyMDI2MDQyMC4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ display: "block", position: "relative", borderRadius: "20px", overflow: "hidden", boxShadow: "0 15px 30px rgba(0,0,0,0.1)" }}
+          >
+            <img
+              src={imgmap}
+              alt="Zone d'intervention DS Multiservices Bordeaux"
+              style={{ width: "100%", height: "auto", display: "block" }}
+              loading="lazy"
+            />
+            <div style={{
+              position: "absolute", bottom: "20px", left: "50%", transform: "translateX(-50%)",
+              background: "rgba(26, 60, 52, 0.9)", color: "white",
+              padding: "10px 20px", borderRadius: "50px", fontSize: "0.9rem", fontWeight: "bold"
+            }}>
+              Cliquez pour voir l'itinéraire
+            </div>
+          </a>
+        </div>
+      </section>
 
       {/* BOUTON FLOTTANT */}
       <a href="tel:+33776553370" className="floating-call" aria-label="Appeler DS Multiservices">
@@ -204,4 +297,4 @@ export default function Home() {
       </a>
     </div>
   );
-}  
+}
