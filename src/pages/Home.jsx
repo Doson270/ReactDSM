@@ -3,10 +3,10 @@ import Navbar from "../components/Navbar";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import imgaccueil from "../assets/gallery/acceuil.webp";
-import imgaccueil3 from "../assets/gallery/accueil3.webp";
 import imgjardin from "../assets/gallery/avant-apres-jardin.webp";
-import imgserre from "../assets/gallery/avant-apres-serre.webp";
+import imgarbre from "../assets/gallery/arbre-tombé.webp";
 import imgmap from "../assets/gallery/imgmaps.webp"
+import tailledehaie from "../assets/gallery/taille-de-haie.webp"
 
 export default function Home() {
   const services = [
@@ -16,7 +16,7 @@ export default function Home() {
     { title: "Entretien Parcs", desc: "Gestion complète de vos espaces verts et évacuation des déchets." }
   ];
 
-  const galleryPreview = [imgjardin, imgserre, imgaccueil3];
+  const galleryPreview = [imgjardin, imgarbre, tailledehaie];
 
   const galleryAlt = [
     "Élagage & abattage                       d'arbres à Bordeaux - DS Multiservices",
