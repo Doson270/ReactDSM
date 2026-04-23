@@ -18,7 +18,7 @@ export default function Home() {
   const galleryPreview = [imgjardin, imgserre, imgaccueil3];
 
   const galleryAlt = [
-    "Élagage d'arbres à Bordeaux - DS Multiservices",
+    "Élagage & abattage d'arbres à Bordeaux - DS Multiservices",
     "Taille de haies en Gironde - DS Multiservices",
     "Entretien jardin Bordeaux - DS Multiservices"
   ];
@@ -30,7 +30,7 @@ export default function Home() {
       <Helmet>
         <title>DS Multiservices | Élagage, Abattage & Taille de Haies à Bordeaux (33)</title>
         <meta name="description" content="Expert élagueur en Gironde. Devis gratuit sous 48h. Travaux assurés RC Pro, évacuation des déchets verts. Intervention rapide à Bordeaux et alentours." />
-        <meta property="og:title" content="DS Multiservices | Élagage & Jardinage à Bordeaux" />
+        <meta property="og:title" content="DS Multiservices | Élagage abattage & Taille de Haie à Bordeaux" />
         <meta property="og:description" content="Expert élagueur en Gironde. Devis gratuit sous 48h. Travaux assurés RC Pro, évacuation des déchets verts." />
         <meta property="og:url" content="https://dsmultiservices.fr/" />
         <meta property="og:type" content="website" />
