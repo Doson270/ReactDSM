@@ -6,6 +6,7 @@ import imgaccueil from "../assets/gallery/acceuil.webp";
 import imgaccueil3 from "../assets/gallery/accueil3.webp";
 import imgjardin from "../assets/gallery/avant-apres-jardin.webp";
 import imgserre from "../assets/gallery/avant-apres-serre.webp";
+import imgmap from "../assets/gallery/imgmaps.webp"
 
 export default function Home() {
   const services = [
@@ -18,7 +19,7 @@ export default function Home() {
   const galleryPreview = [imgjardin, imgserre, imgaccueil3];
 
   const galleryAlt = [
-    "Élagage & abattage d'arbres à Bordeaux - DS Multiservices",
+    "Élagage & abattage                       d'arbres à Bordeaux - DS Multiservices",
     "Taille de haies en Gironde - DS Multiservices",
     "Entretien jardin Bordeaux - DS Multiservices"
   ];
@@ -161,20 +162,41 @@ export default function Home() {
       </section>
 
       {/* --- CARTE --- */}
-      <section style={{ padding: "100px 0", background: "white" }}>
-        <div className="container" data-aos="zoom-in">
-          <div style={{ maxWidth: "1100px", margin: "0 auto", height: "450px", borderRadius: "24px", overflow: "hidden", boxShadow: "0 25px 50px rgba(0,0,0,0.12)", border: "12px solid white", background: "#f0f0f0" }}>
-            <iframe
-              title="Carte zone d'intervention"
-              src={mapUrl}
-              width="100%" height="100%" style={{ border: 0 }}
-              allowFullScreen="" 
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-        </div>
-      </section>
+{/* --- CARTE (VERSION OPTIMISÉE) --- */}
+<section style={{ padding: "80px 20px", background: "white" }}>
+  <div style={{ maxWidth: "1100px", margin: "0 auto", textAlign: "center" }}>
+    <h2 style={{ color: "#1a3c34", marginBottom: "30px", fontFamily: "'Playfair Display', serif" }}>Zone d'intervention : Bordeaux & Gironde</h2>
+    
+    <a 
+      href="https://www.google.com/maps/place/DSMultiservices/@44.9549377,-0.4702343,88900m/data=!3m1!1e3!4m14!1m7!3m6!1s0xd552d007d27fe2b:0xe016444afb83cf1e!2sDSMultiservices!8m2!3d44.9724389!4d-0.459054!16s%2Fg%2F11w41x9zt4!3m5!1s0xd552d007d27fe2b:0xe016444afb83cf1e!8m2!3d44.9724389!4d-0.459054!16s%2Fg%2F11w41x9zt4?entry=ttu&g_ep=EgoyMDI2MDQyMC4wIKXMDSoASAFQAw%3D%3D" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      style={{ display: "block", position: "relative", borderRadius: "20px", overflow: "hidden", boxShadow: "0 15px 30px rgba(0,0,0,0.1)" }}
+    >
+      {/* Utilise ici ta capture d'écran optimisée en WebP */}
+      <img 
+        src={imgmap} 
+        alt="Zone d'intervention DS Multiservices Bordeaux" 
+        style={{ width: "100%", height: "auto", display: "block" }}
+        loading="lazy"
+      />
+      <div style={{
+        position: "absolute",
+        bottom: "20px",
+        left: "50%",
+        transform: "translateX(-50%)",
+        background: "rgba(26, 60, 52, 0.9)",
+        color: "white",
+        padding: "10px 20px",
+        borderRadius: "50px",
+        fontSize: "0.9rem",
+        fontWeight: "bold"
+      }}>
+        Cliquez pour voir l'itinéraire
+      </div>
+    </a>
+  </div>
+</section>
 
       {/* BOUTON FLOTTANT */}
       <a href="tel:+33776553370" className="floating-call" aria-label="Appeler DS Multiservices">
