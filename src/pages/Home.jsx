@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { useUserLocation } from "../hooks/useUserLocation";
 import imgaccueil from "../assets/gallery/acceuil.webp";
 import imgjardin from "../assets/gallery/avant-apres-jardin.webp";
 import imgarbre from "../assets/gallery/arbre-tombé.webp";
@@ -10,54 +9,119 @@ import imgmap from "../assets/gallery/imgmaps.webp";
 import tailledehaie from "../assets/gallery/taille-de-haie.webp";
 
 export default function Home() {
-  // Récupération de la localisation de l'utilisateur par IP
-  const { ville } = useUserLocation();
-
   const services = [
     { 
       title: "Élagage & Taille", 
-      desc: `Taille de restructuration, mise en sécurité et soins aux arbres. Nous intervenons sur tous types d'arbres pour préserver leur santé et votre sécurité à ${ville.name} et en Gironde.` 
+      desc: "Taille de restructuration, mise en sécurité et soins aux arbres. Nous intervenons sur tous types d'arbres pour préserver leur santé et votre sécurité à Bordeaux, Libourne et en Gironde." 
     },
     { 
       title: "Abattage Délicat", 
-      desc: `Démontage d'arbres dangereux avec rétention en zones urbaines. Notre équipe gère l'abattage d'arbres en toute sécurité, même dans des espaces contraints à ${ville.name}.` 
+      desc: "Démontage d'arbres dangereux avec rétention en zones urbaines. Notre équipe gère l'abattage d'arbres en toute sécurité, même dans des espaces contraints en Gironde." 
     },
     { 
       title: "Taille de Haies", 
-      desc: `Entretien régulier pour des clôtures végétales denses et esthétiques. Taille de haies de toutes essences à ${ville.name} et alentours.` 
+      desc: "Entretien régulier pour des clôtures végétales denses et esthétiques. Taille de haies de toutes essences à Bordeaux, Libourne et alentours." 
     },
     { 
       title: "Entretien Parcs", 
-      desc: `Gestion complète de vos espaces verts et évacuation des déchets verts incluse. Interventions régulières pour particuliers et professionnels à ${ville.name}.` 
+      desc: "Gestion complète de vos espaces verts et évacuation des déchets verts incluse. Interventions régulières pour particuliers et professionnels en Gironde." 
     }
   ];
 
   const galleryPreview = [imgjardin, imgarbre, tailledehaie];
 
   const galleryAlt = [
-    `Élagage & abattage d'arbres à ${ville.name} - DS Multiservices`,
-    `Taille de haies à ${ville.name} - DS Multiservices`,
-    `Entretien jardin ${ville.name} - DS Multiservices`
+    "Élagage & abattage d'arbres en Gironde - DS Multiservices",
+    "Taille de haies à Bordeaux et Libourne - DS Multiservices",
+    "Entretien jardin et espaces verts en Gironde - DS Multiservices"
   ];
 
   const temoignages = [
-    { nom: "Jean-Pierre M.", ville: ville.name, note: "★★★★★", texte: `Intervention rapide pour l'abattage d'un grand pin dangereux à ${ville.name}. Travail soigné, chantier propre. Je recommande vivement DS Multiservices.` },
-    { nom: "Sophie L.", ville: ville.name, note: "★★★★★", texte: `Excellente taille de haies à ${ville.name}, devis reçu en 24h et équipe très professionnelle. Prix honnête pour la qualité du travail rendu.` },
-    { nom: "Marc D.", ville: ville.name, note: "★★★★★", texte: `Élagage de plusieurs arbres dans mon jardin à ${ville.name}. Résultat impeccable, équipe sérieuse et ponctuelle. Merci DS Multiservices !` }
+    { nom: "Jean-Pierre M.", ville: "Libourne", note: "★★★★★", texte: "Intervention rapide pour l'abattage d'un grand pin dangereux à Libourne. Travail soigné, chantier propre. Je recommande vivement DS Multiservices." },
+    { nom: "Sophie L.", ville: "Bordeaux", note: "★★★★★", texte: "Excellente taille de haies à Bordeaux, devis reçu en 24h et équipe très professionnelle. Prix honnête pour la qualité du travail rendu." },
+    { nom: "Marc D.", ville: "Pessac", note: "★★★★★", texte: "Élagage de plusieurs arbres dans mon jardin. Résultat impeccable, équipe sérieuse et ponctuelle. Merci DS Multiservices !" }
   ];
+
+  const faqs = [
+    {
+      q: "Intervenez-vous en urgence pour l'abattage d'un arbre dangereux en Gironde ?",
+      r: "Oui, DS Multiservices intervient 7j/7 pour tout abattage d'arbre en urgence à Bordeaux, Libourne et dans toute la Gironde. Contactez-nous par téléphone au 07 76 55 33 70 pour une intervention rapide."
+    },
+    {
+      q: "Quel est le prix d'un élagage en Gironde (33) ?",
+      r: "Le tarif d'un élagage dépend de la taille de l'arbre, de son accessibilité et du type de travaux à réaliser. Nous proposons un devis élagage gratuit sous 48h, sans engagement."
+    },
+    {
+      q: "Dans quelles communes de Gironde intervenez-vous ?",
+      r: "Nous intervenons sur l'ensemble du département de la Gironde (33) : Bordeaux Métropole, le Libournais, le Bassin d'Arcachon et toutes les communes environnantes."
+    },
+    {
+      q: "L'évacuation des déchets verts est-elle comprise ?",
+      r: "Oui, nous assurons le broyage et l'évacuation complète des branches et déchets végétaux après chaque intervention d'élagage, d'abattage ou de taille de haies."
+    }
+  ];
+
+  // Données structurées Schema.org JSON-LD pour la Home Page
+  const homeSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+        "@id": "https://dsmultiservices.fr/#organization",
+        "name": "DS Multiservices - Élagage & Paysage Gironde",
+        "url": "https://dsmultiservices.fr/",
+        "telephone": "+33776553370",
+        "priceRange": "€€",
+        "image": "https://dsmultiservices.fr/logo-dsm.png",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Libourne",
+          "postalCode": "33300",
+          "addressRegion": "Gironde",
+          "addressCountry": "FR"
+        },
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "Gironde (33)"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "reviewCount": "24",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(faq => ({
+          "@type": "Question",
+          "name": faq.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.r
+          }
+        }))
+      }
+    ]
+  };
 
   return (
     <div className="home-container" style={{ background: "#fdfdfd" }}>
       <Helmet>
-        <title>DS Multiservices | Élagage, Abattage & Taille de Haies à {ville.name} ({ville.cp})</title>
-        <meta name="description" content={`Expert élagueur à ${ville.name} et en Gironde. Devis gratuit sous 48h. Travaux assurés RC Pro, évacuation des déchets verts. Intervention rapide à ${ville.name} et alentours.`} />
-        <meta property="og:title" content={`DS Multiservices | Élagage abattage & Taille de Haie à ${ville.name}`} />
-        <meta property="og:description" content={`Expert élagueur à ${ville.name} (${ville.cp}). Devis gratuit sous 48h. Travaux assurés RC Pro, évacuation des déchets verts.`} />
+        <title>DS Multiservices | Élagage, Abattage & Taille de Haies à Bordeaux & Gironde (33)</title>
+        <meta name="description" content="Expert élagueur à Bordeaux, Libourne et toute la Gironde (33). Devis gratuit sous 48h. Travaux assurés RC Pro, évacuation des déchets verts. Intervention rapide 7j/7." />
+        <meta property="og:title" content="DS Multiservices | Élagage, Abattage & Taille de Haies en Gironde" />
+        <meta property="og:description" content="Artisan élagueur paysagiste en Gironde (33). Devis gratuit sous 48h. Élagage, abattage délicat et taille de haies." />
         <meta property="og:url" content="https://dsmultiservices.fr/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://dsmultiservices.fr/logo-dsm.png" />
         <link rel="canonical" href="https://dsmultiservices.fr/" />
         <link rel="preload" as="image" href={imgaccueil} fetchPriority="high" />
+
+        <script type="application/ld+json">
+          {JSON.stringify(homeSchema)}
+        </script>
       </Helmet>
 
       <Navbar />
@@ -73,7 +137,7 @@ export default function Home() {
       }}>
         <img
           src={imgaccueil}
-          alt={`elagage ${ville.name}`}
+          alt="Élagage et abattage d'arbres en Gironde DS Multiservices"
           fetchPriority="high"
           style={{
             position: "absolute", top: 0, left: 0,
@@ -83,11 +147,11 @@ export default function Home() {
         />
 
         <div data-aos="fade-down" style={{ position: "relative", zIndex: 2 }}>
-          <h1 style={{ fontSize: "clamp(2.5rem, 8vw, 4rem)", marginBottom: "15px", fontFamily: "'Playfair Display', serif", fontWeight: 900 }}>
-            Élagage Abattage & Taille de Haie à {ville.name}
+          <h1 style={{ fontSize: "clamp(2.2rem, 7vw, 3.8rem)", marginBottom: "15px", fontFamily: "'Playfair Display', serif", fontWeight: 900 }}>
+            Élagage, Abattage & Taille de Haie en Gironde
           </h1>
-          <p style={{ fontSize: "1.3rem", marginBottom: "40px", opacity: 0.9, maxWidth: "800px", margin: "0 auto 40px" }}>
-            Intervention rapide & Urgence 7j/7. Devis Gratuit sous 48h à {ville.name} ({ville.cp}) et alentours.
+          <p style={{ fontSize: "1.25rem", marginBottom: "40px", opacity: 0.9, maxWidth: "800px", margin: "0 auto 40px" }}>
+            Intervention rapide & Urgence 7j/7 sur Bordeaux, Libourne et toute la Gironde (33). Devis gratuit sous 48h.
           </p>
 
           <div style={{ marginBottom: "20px", display: "flex", flexDirection: "column", alignItems: "center", gap: "15px" }}>
@@ -116,7 +180,7 @@ export default function Home() {
           </div>
 
           <p style={{ marginTop: "25px", fontSize: "1rem", color: "#c5a358", fontWeight: "bold" }}>
-            <span style={{ color: "#ffc107" }}>★★★★★</span> +50 clients satisfaits à {ville.name} et secteur
+            <span style={{ color: "#ffc107" }}>★★★★★</span> +50 clients satisfaits en Gironde
           </p>
         </div>
       </header>
@@ -132,7 +196,7 @@ export default function Home() {
           { label: "Assurance RC Pro", sub: "Travaux 100% sécurisés", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="#1a3c34"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> },
           { label: "Devis sous 48h", sub: "Réactivité garantie", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="#1a3c34"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg> },
           { label: "Chantier Propre", sub: "Évacuation des déchets", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="#1a3c34"><path d="M17 8C8 10 5.9 16.17 3.82 21H5.71C7.38 17.07 11.07 13 17 13v5l7-7-7-7v3z"/></svg> },
-          { label: "Expert Local", sub: `Basé à ${ville.name}`, icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="#1a3c34"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> }
+          { label: "Expert Gironde", sub: "Bordeaux, Libourne & 33", icon: <svg width="32" height="32" viewBox="0 0 24 24" fill="#1a3c34"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> }
         ].map((item, i, arr) => (
           <div key={i} style={{ textAlign: "center", borderRight: i < arr.length - 1 && window.innerWidth > 768 ? "1px solid #f0f0f0" : "none" }}>
             <div style={{ marginBottom: "10px" }}>{item.icon}</div>
@@ -145,21 +209,17 @@ export default function Home() {
       {/* --- BLOC TEXTE SEO --- */}
       <section data-aos="fade-up" style={{ padding: "60px 20px", maxWidth: "900px", margin: "0 auto 20px auto" }}>
         <h2 style={{ color: "#1a3c34", fontFamily: "'Playfair Display', serif", fontSize: "2rem", marginBottom: "20px", textAlign: "center" }}>
-          Élagueur professionnel à {ville.name} ({ville.cp}) & en Gironde
+          Élagueur paysagiste professionnel en Gironde (33)
         </h2>
         <div style={{ width: "60px", height: "4px", background: "#c5a358", margin: "0 auto 30px auto" }}></div>
         <p style={{ color: "#555", fontSize: "1.05rem", lineHeight: "1.9", marginBottom: "20px" }}>
-          DS Multiservices est votre expert en <strong>élagage, abattage d'arbres et taille de haies à {ville.name}</strong> et dans toute la Gironde (33).
-          Que vous ayez besoin d'un <strong>élagueur à {ville.name}</strong> pour un arbre dangereux, d'un <strong>abattage délicat</strong> en zone urbaine
-          ou d'une <strong>taille de haies</strong> régulière, notre équipe intervient rapidement sur votre chantier avec tout le matériel nécessaire.
+          DS Multiservices est votre entreprise spécialisée en <strong>élagage, abattage d'arbres et taille de haies à Bordeaux, Libourne</strong> et dans l'ensemble de la Gironde.
+          Que vous ayez besoin d'un <strong>élagueur professionnel</strong> pour un arbre menaçant, d'un <strong>abattage délicat par rétention</strong> en secteur résidentiel
+          ou d'un entretien régulier de vos haies, nous intervenons avec réactivité et équipements sécurisés.
         </p>
         <p style={{ color: "#555", fontSize: "1.05rem", lineHeight: "1.9", marginBottom: "20px" }}>
-          Nous réalisons des <strong>devis élagage gratuits sous 48h</strong> pour tous vos travaux arboricoles à {ville.name} ({ville.cp}) et dans l'ensemble du secteur gironde.
-          Nos interventions sont couvertes par une <strong>assurance RC Pro</strong> et nous assurons l'évacuation complète des déchets verts.
-        </p>
-        <p style={{ color: "#555", fontSize: "1.05rem", lineHeight: "1.9" }}>
-          Urgence <strong>abattage élagage à {ville.name}</strong> ? Nous sommes disponibles <strong>7j/7</strong> pour intervenir rapidement.
-          Appelez-nous dès maintenant pour un devis gratuit et sans engagement.
+          Nous établissons des <strong>devis gratuits sous 48h</strong> pour l'ensemble de vos travaux d'espaces verts en Gironde.
+          Toutes nos prestations sont couvertes par une <strong>assurance Responsabilité Civile Professionnelle</strong> et incluent le broyage ainsi que l'évacuation complète des rémanents végétaux.
         </p>
         <div style={{ textAlign: "center", marginTop: "35px" }}>
           <a
@@ -172,7 +232,7 @@ export default function Home() {
               }
             }}
           >
-            Appeler pour un Devis Gratuit à {ville.name}
+            Appeler pour un Devis Gratuit
           </a>
         </div>
       </section>
@@ -181,7 +241,7 @@ export default function Home() {
       <section style={{ padding: "80px 20px", maxWidth: "1200px", margin: "auto" }}>
         <div style={{ textAlign: "center", marginBottom: "60px" }}>
           <h2 data-aos="fade-up" style={{ fontSize: "2.8rem", color: "#1a3c34", fontFamily: "'Playfair Display', serif" }}>
-            Nos Prestations à {ville.name}
+            Nos Prestations en Gironde
           </h2>
           <div style={{ width: "60px", height: "4px", background: "#c5a358", margin: "15px auto" }}></div>
         </div>
@@ -201,7 +261,7 @@ export default function Home() {
           Derniers Chantiers
         </h2>
         <p style={{ color: "#666", maxWidth: "600px", margin: "0 auto 40px auto", fontSize: "1rem" }}>
-          Élagage, abattage et taille de haies réalisés à {ville.name} et en Gironde par notre équipe.
+          Aperçu de nos interventions d'élagage, d'abattage et de taille de haies réalisées en Gironde.
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "20px", maxWidth: "1100px", margin: "0 auto 50px auto" }}>
           {galleryPreview.map((url, i) => (
@@ -224,7 +284,7 @@ export default function Home() {
       <section style={{ padding: "80px 20px", background: "white" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", textAlign: "center" }}>
           <h2 data-aos="fade-up" style={{ color: "#1a3c34", fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", marginBottom: "15px" }}>
-            Ce que disent nos clients à {ville.name}
+            Témoignages de nos clients
           </h2>
           <div style={{ width: "60px", height: "4px", background: "#c5a358", margin: "0 auto 50px auto" }}></div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "30px" }}>
@@ -250,27 +310,10 @@ export default function Home() {
       <section style={{ padding: "80px 20px", background: "#f4f7f6" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
           <h2 data-aos="fade-up" style={{ color: "#1a3c34", fontFamily: "'Playfair Display', serif", fontSize: "2.2rem", marginBottom: "15px", textAlign: "center" }}>
-            Questions fréquentes à {ville.name}
+            Questions fréquentes
           </h2>
           <div style={{ width: "60px", height: "4px", background: "#c5a358", margin: "0 auto 50px auto" }}></div>
-          {[
-            {
-              q: `Intervenez-vous en urgence pour l'abattage d'un arbre dangereux à ${ville.name} ?`,
-              r: `Oui, DS Multiservices intervient 7j/7 pour tout abattage d'arbre en urgence à ${ville.name} et dans toute la Gironde. Contactez-nous par téléphone pour une intervention rapide.`
-            },
-            {
-              q: `Quel est le prix d'un élagage à ${ville.name} ?`,
-              r: `Le tarif d'un élagage dépend de la taille de l'arbre, de l'accessibilité et du type de travaux. Nous proposons un devis élagage gratuit sous 48h à ${ville.name}, sans engagement.`
-            },
-            {
-              q: `Dans quelles communes autour de ${ville.name} intervenez-vous ?`,
-              r: `Nous intervenons sur l'ensemble du secteur de ${ville.name} (${ville.cp}) ainsi que dans toutes les communes environnantes de Gironde.`
-            },
-            {
-              q: `La taille de haies est-elle incluse pour les interventions à ${ville.name} ?`,
-              r: `Oui, nous proposons la taille de haies pour particuliers et professionnels à ${ville.name}. Nous gérons toutes les essences et assurons l'évacuation des déchets verts.`
-            }
-          ].map((item, i) => (
+          {faqs.map((item, i) => (
             <div key={i} data-aos="fade-up" style={{ marginBottom: "25px", background: "white", borderRadius: "10px", padding: "25px 30px", boxShadow: "0 3px 10px rgba(0,0,0,0.04)" }}>
               <h3 style={{ color: "#1a3c34", fontSize: "1.05rem", marginBottom: "10px", fontFamily: "'Playfair Display', serif" }}>{item.q}</h3>
               <p style={{ color: "#666", margin: 0, fontSize: "0.95rem", lineHeight: "1.7" }}>{item.r}</p>
@@ -279,24 +322,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- CARTE --- */}
+      {/* --- CARTE & ZONES --- */}
       <section style={{ padding: "80px 20px", background: "white" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", textAlign: "center" }}>
           <h2 style={{ color: "#1a3c34", marginBottom: "15px", fontFamily: "'Playfair Display', serif", fontSize: "2.2rem" }}>
-            Zone d'intervention : {ville.name} & Gironde
+            Zone d'intervention : Toute la Gironde (33)
           </h2>
-          <p style={{ color: "#666", maxWidth: "600px", margin: "0 auto 30px auto", fontSize: "1rem" }}>
-            Élagueur basé en Gironde, nous intervenons rapidement sur {ville.name} ({ville.cp}) et l'ensemble du département pour vos travaux d'élagage, abattage et taille de haies.
+          <p style={{ color: "#666", maxWidth: "600px", margin: "0 auto 20px auto", fontSize: "1rem" }}>
+            Basés en Gironde, nous intervenons rapidement sur Bordeaux, Libourne et dans plus de 500 communes pour vos travaux d'élagage, abattage et entretien de jardins.
           </p>
+          <div style={{ marginBottom: "35px" }}>
+            <Link to="/zones-intervention" style={{ color: "#c5a358", fontWeight: "bold", textDecoration: "underline", fontSize: "1.05rem" }}>
+              Découvrir nos 535 communes d'intervention →
+            </Link>
+          </div>
           <a
-            href="https://www.google.com/maps/place/DSMultiservices/@44.9549377,-0.4702343,88900m/data=!3m1!1e3!4m14!1m7!3m6!1s0xd552d007d27fe2b:0xe016444afb83cf1e!2sDSMultiservices!8m2!3d44.9724389!4d-0.459054!16s%2Fg%2F11w41x9zt4!3m5!1s0xd552d007d27fe2b:0xe016444afb83cf1e!8m2!3d44.9724389!4d-0.459054!16s%2Fg%2F11w41x9zt4?entry=ttu&g_ep=EgoyMDI2MDQyMC4wIKXMDSoASAFQAw%3D%3D"
+            href="https://www.google.com/maps/place/DSMultiservices/@44.9549377,-0.4702343,88900m/data=!3m1!1e3!4m14!1m7!3m6!1s0xd552d007d27fe2b:0xe016444afb83cf1e!2sDSMultiservices!8m2!3d44.9724389!4d-0.459054!16s%2Fg%2F11w41x9zt4!3m5!1s0xd552d007d27fe2b:0xe016444afb83cf1e!8m2!3d44.9724389!4d-0.459054!16s%2Fg%2F11w41x9zt4?entry=ttu"
             target="_blank"
             rel="noopener noreferrer"
             style={{ display: "block", position: "relative", borderRadius: "20px", overflow: "hidden", boxShadow: "0 15px 30px rgba(0,0,0,0.1)" }}
           >
             <img
               src={imgmap}
-              alt={`Zone d'intervention DS Multiservices ${ville.name}`}
+              alt="Zone d'intervention DS Multiservices Gironde"
               style={{ width: "100%", height: "auto", display: "block" }}
               loading="lazy"
             />
@@ -305,13 +353,13 @@ export default function Home() {
               background: "rgba(26, 60, 52, 0.9)", color: "white",
               padding: "10px 20px", borderRadius: "50px", fontSize: "0.9rem", fontWeight: "bold"
             }}>
-              Cliquez pour voir l'itinéraire vers {ville.name}
+              Voir la zone d'intervention sur Google Maps
             </div>
           </a>
         </div>
       </section>
 
-      {/* BOUTON FLOTTANT */}
+      {/* BOUTON FLOTTANT APPEL */}
       <a href="tel:+33776553370" className="floating-call" aria-label="Appeler DS Multiservices">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
       </a>
