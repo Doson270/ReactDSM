@@ -37,9 +37,9 @@ export default function ElagageVille() {
   const galleryPreview = [imgjardin, imgarbre, tailledehaie];
 
   const galleryAlt = [
-    `Élagage & abattage d'arbres à ${ville.name} - DS Multiservices`,
-    `Taille de haies à ${ville.name} - DS Multiservices`,
-    `Entretien jardin ${ville.name} - DS Multiservices`
+    `Élagage & abattage d'arbres à ${ville.name} DS Multiservices`,
+    `Taille de haies à ${ville.name} DS Multiservices`,
+    `Entretien jardin ${ville.name} DS Multiservices`
   ];
 
   const temoignages = [
@@ -47,37 +47,113 @@ export default function ElagageVille() {
     { nom: "Sophie L.", ville: ville.name, note: "★★★★★", texte: `Excellente taille de haies à ${ville.name}, devis reçu en 24h et équipe très professionnelle. Prix honnête pour la qualité du travail rendu.` },
     { nom: "Marc D.", ville: ville.name, note: "★★★★★", texte: `Élagage de plusieurs arbres dans mon jardin à ${ville.name}. Résultat impeccable, équipe sérieuse et ponctuelle. Merci DS Multiservices !` }
   ];
-  // Données structurées Schema.org pour Google (Rich Snippets)
-  // Données structurées Schema.org pour Google (Rich Snippets) - Version corrigée
+
+  // Données structurées Schema.org pour Google (Rich Snippets) : LocalBusiness + FAQPage + BreadcrumbList
   const schemaData = {
     "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
-    "name": `DS Multiservices - Élagage et Abattage à ${ville.name}`,
-    "image": "https://dsmultiservices.fr/logo-dsm.png",
-    "@id": `https://dsmultiservices.fr/elagage/${ville.slug}`,
-    "url": `https://dsmultiservices.fr/elagage/${ville.slug}`,
-    "telephone": "+33776553370",
-    "priceRange": "€€",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": ville.name,
-      "postalCode": ville.cp,
-      "addressRegion": "Gironde",
-      "addressCountry": "FR"
-    },
-    "areaServed": {
-      "@type": "AdministrativeArea",
-      "name": `${ville.name} (${ville.cp})`
-    },
-    "description": `Entreprise spécialisée dans l'élagage, l'abattage d'arbres et la taille de haies à ${ville.name} (${ville.cp}). Devis gratuit et intervention rapide.`,
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "24",
-      "bestRating": "5",
-      "worstRating": "1"
-    }
+    "@graph": [
+      {
+        "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+        "@id": `https://dsmultiservices.fr/elagage/${ville.slug}/#business`,
+        "name": `DS Multiservices - Élagage et Abattage à ${ville.name}`,
+        "image": "https://dsmultiservices.fr/logo-dsm.png",
+        "url": `https://dsmultiservices.fr/elagage/${ville.slug}`,
+        "telephone": "+33776553370",
+        "priceRange": "€€",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": ville.name,
+          "postalCode": ville.cp,
+          "addressRegion": "Gironde",
+          "addressCountry": "FR"
+        },
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": `${ville.name} (${ville.cp})`
+        },
+        "description": `Entreprise spécialisée dans l'élagage, l'abattage d'arbres et la taille de haies à ${ville.name} (${ville.cp}). Devis gratuit et intervention rapide.`,
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "reviewCount": "24",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": `Intervenez-vous en urgence pour l'abattage d'un arbre dangereux à ${ville.name} ?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Oui, DS Multiservices intervient 7j/7 pour tout abattage d'arbre en urgence à ${ville.name} (${ville.cp}) et dans toute la Gironde. Contactez-nous au 07 76 55 33 70.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Quel est le prix d'un élagage à ${ville.name} ?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Le tarif d'un élagage à ${ville.name} dépend de la hauteur de l'arbre, de son envergure et de l'accessibilité du chantier. Nous offrons un devis gratuit sous 48h.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Assurez-vous l'évacuation des déchets verts à ${ville.name} ?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Absolument. Toutes nos prestations d'élagage, abattage et taille de haies à ${ville.name} incluent le broyage et l'évacuation complète des rémanents végétaux.`
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Accueil",
+            "item": "https://dsmultiservices.fr/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Zones d'intervention",
+            "item": "https://dsmultiservices.fr/zones-intervention"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": `Élagage ${ville.name}`,
+            "item": `https://dsmultiservices.fr/elagage/${ville.slug}`
+          }
+        ]
+      }
+    ]
   };
+
+  const faqs = [
+    {
+      q: `Intervenez-vous en urgence pour l'abattage d'un arbre dangereux à ${ville.name} ?`,
+      r: `Oui, DS Multiservices intervient 7j/7 pour tout abattage d'arbre en urgence à ${ville.name} (${ville.cp}) et dans toute la Gironde. Contactez-nous par téléphone pour une intervention rapide.`
+    },
+    {
+      q: `Quel est le prix d'un élagage à ${ville.name} ?`,
+      r: `Le tarif d'un élagage dépend de la taille de l'arbre, de l'accessibilité et du type de travaux. Nous proposons un devis élagage gratuit sous 48h à ${ville.name}, sans engagement.`
+    },
+    {
+      q: `Dans quelles communes autour de ${ville.name} intervenez-vous ?`,
+      r: `Nous intervenons sur l'ensemble du secteur de ${ville.name} (${ville.cp}) ainsi que dans toutes les communes environnantes de Gironde.`
+    },
+    {
+      q: `La taille de haies est-elle incluse pour les interventions à ${ville.name} ?`,
+      r: `Oui, nous proposons la taille de haies pour particuliers et professionnels à ${ville.name}. Nous gérons toutes les essences et assurons l'évacuation des déchets verts.`
+    }
+  ];
+
   return (
     <div className="home-container" style={{ background: "#fdfdfd" }}>
       <Helmet>
@@ -90,13 +166,33 @@ export default function ElagageVille() {
         <meta property="og:image" content="https://dsmultiservices.fr/logo-dsm.png" />
         <link rel="canonical" href={`https://dsmultiservices.fr/elagage/${ville.slug}`} />
         <link rel="preload" as="image" href={imgaccueil} fetchPriority="high" />
-        {/* Balisage Schema.org pour Rich Snippets Google */}
-  <     script type="application/ld+json">
-        {JSON.stringify(schemaData)}
+        <script type="application/ld+json">
+          {JSON.stringify(schemaData)}
         </script>
       </Helmet>
 
       <Navbar />
+
+<Navbar />
+
+      {/* --- FIL D'ARIANE FORCÉ --- */}
+      <div style={{ position: "relative", zIndex: 999, background: "#ffffff", borderBottom: "2px solid #c5a358", padding: "15px 0" }}>
+        <nav aria-label="Fil d'Ariane" style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 20px", fontSize: "0.95rem" }}>
+          <ol style={{ listStyle: "none", display: "flex", flexWrap: "wrap", gap: "10px", padding: 0, margin: 0, color: "#333", alignItems: "center" }}>
+            <li>
+              <Link to="/" style={{ color: "#1a3c34", textDecoration: "underline", fontWeight: "bold" }}>Accueil</Link>
+            </li>
+            <li>/</li>
+            <li>
+              <Link to="/zones-intervention" style={{ color: "#1a3c34", textDecoration: "underline", fontWeight: "bold" }}>Zones d'intervention</Link>
+            </li>
+            <li>/</li>
+            <li style={{ color: "#c5a358", fontWeight: "bold" }} aria-current="page">
+              {ville.name}
+            </li>
+          </ol>
+        </nav>
+      </div>
 
       {/* --- HERO SECTION --- */}
       <header className="hero-section" style={{
@@ -282,31 +378,14 @@ export default function ElagageVille() {
         </div>
       </section>
 
-      {/* --- FAQ SEO --- */}
+      {/* --- FAQ SEO & VISUELLE --- */}
       <section style={{ padding: "80px 20px", background: "#f4f7f6" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto" }}>
           <h2 data-aos="fade-up" style={{ color: "#1a3c34", fontFamily: "'Playfair Display', serif", fontSize: "2.2rem", marginBottom: "15px", textAlign: "center" }}>
             Questions fréquentes à {ville.name}
           </h2>
           <div style={{ width: "60px", height: "4px", background: "#c5a358", margin: "0 auto 50px auto" }}></div>
-          {[
-            {
-              q: `Intervenez-vous en urgence pour l'abattage d'un arbre dangereux à ${ville.name} ?`,
-              r: `Oui, DS Multiservices intervient 7j/7 pour tout abattage d'arbre en urgence à ${ville.name} et dans toute la Gironde. Contactez-nous par téléphone pour une intervention rapide.`
-            },
-            {
-              q: `Quel est le prix d'un élagage à ${ville.name} ?`,
-              r: `Le tarif d'un élagage dépend de la taille de l'arbre, de l'accessibilité et du type de travaux. Nous proposons un devis élagage gratuit sous 48h à ${ville.name}, sans engagement.`
-            },
-            {
-              q: `Dans quelles communes autour de ${ville.name} intervenez-vous ?`,
-              r: `Nous intervenons sur l'ensemble du secteur de ${ville.name} (${ville.cp}) ainsi que dans toutes les communes environnantes de Gironde.`
-            },
-            {
-              q: `La taille de haies est-elle incluse pour les interventions à ${ville.name} ?`,
-              r: `Oui, nous proposons la taille de haies pour particuliers et professionnels à ${ville.name}. Nous gérons toutes les essences et assurons l'évacuation des déchets verts.`
-            }
-          ].map((item, i) => (
+          {faqs.map((item, i) => (
             <div key={i} data-aos="fade-up" style={{ marginBottom: "25px", background: "white", borderRadius: "10px", padding: "25px 30px", boxShadow: "0 3px 10px rgba(0,0,0,0.04)" }}>
               <h3 style={{ color: "#1a3c34", fontSize: "1.05rem", marginBottom: "10px", fontFamily: "'Playfair Display', serif" }}>{item.q}</h3>
               <p style={{ color: "#666", margin: 0, fontSize: "0.95rem", lineHeight: "1.7" }}>{item.r}</p>
