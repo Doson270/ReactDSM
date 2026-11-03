@@ -48,33 +48,36 @@ export default function ElagageVille() {
     { nom: "Marc D.", ville: ville.name, note: "★★★★★", texte: `Élagage de plusieurs arbres dans mon jardin à ${ville.name}. Résultat impeccable, équipe sérieuse et ponctuelle. Merci DS Multiservices !` }
   ];
   // Données structurées Schema.org pour Google (Rich Snippets)
-const schemaData = {
-  "@context": "https://schema.org",
-  "@type": "TreeService", // Type d'entreprise spécialisé (Élagage/Abattage)
-  "name": `DS Multiservices - Élagage et Abattage à ${ville.name}`,
-  "image": "https://dsmultiservices.fr/logo-dsm.png",
-  "@id": `https://dsmultiservices.fr/elagage/${ville.slug}`,
-  "url": `https://dsmultiservices.fr/elagage/${ville.slug}`,
-  "telephone": "+33776553370",
-  "priceRange": "€€",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": ville.name,
-    "postalCode": ville.cp,
-    "addressRegion": "Gironde",
-    "addressCountry": "FR"
-  },
-  "areaServed": {
-    "@type": "AdministrativeArea",
-    "name": `${ville.name} (${ville.cp})`
-  },
-  "description": `Entreprise spécialisée dans l'élagage, l'abattage d'arbres et la taille de haies à ${ville.name} (${ville.cp}). Devis gratuit et intervention rapide.`,
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": "24"
-  }
-};
+  // Données structurées Schema.org pour Google (Rich Snippets) - Version corrigée
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+    "name": `DS Multiservices - Élagage et Abattage à ${ville.name}`,
+    "image": "https://dsmultiservices.fr/logo-dsm.png",
+    "@id": `https://dsmultiservices.fr/elagage/${ville.slug}`,
+    "url": `https://dsmultiservices.fr/elagage/${ville.slug}`,
+    "telephone": "+33776553370",
+    "priceRange": "€€",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": ville.name,
+      "postalCode": ville.cp,
+      "addressRegion": "Gironde",
+      "addressCountry": "FR"
+    },
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": `${ville.name} (${ville.cp})`
+    },
+    "description": `Entreprise spécialisée dans l'élagage, l'abattage d'arbres et la taille de haies à ${ville.name} (${ville.cp}). Devis gratuit et intervention rapide.`,
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "24",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  };
   return (
     <div className="home-container" style={{ background: "#fdfdfd" }}>
       <Helmet>
