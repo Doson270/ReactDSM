@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ScrollToTop from "./components/ScrollToTop";
+import ElagageVille from './pages/ElagageVille';
+
 
 import Home from "./pages/Home";
 import Services from "./pages/Services";
@@ -38,6 +40,7 @@ export default function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/galerie" element={<Galerie />} />
         <Route path="/mentions-legales" element={<MentionsLegales />} />
+        <Route path="/elagage/:villeSlug" element={<ElagageVille />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
