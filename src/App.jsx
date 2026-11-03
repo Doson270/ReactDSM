@@ -14,6 +14,7 @@ import Avis from "./pages/Avis";
 import FAQ from "./pages/FAQ";
 import Galerie from "./pages/Galerie";
 import MentionsLegales from "./pages/MentionsLegales";
+import ZonesIntervention from "./pages/ZonesIntervention";
 
 import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
@@ -40,6 +41,7 @@ export default function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/galerie" element={<Galerie />} />
         <Route path="/mentions-legales" element={<MentionsLegales />} />
+        <Route path="/zones-intervention" element={<ZonesIntervention />} />
         <Route path="/elagage/:villeSlug" element={<ElagageVille />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

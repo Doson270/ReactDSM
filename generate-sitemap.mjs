@@ -12,7 +12,8 @@ const staticPages = [
   '/avis',
   '/faq',
   '/galerie',
-  '/mentions-legales'
+  '/mentions-legales',
+  '/zones-intervention'
 ];
 
 let sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`;

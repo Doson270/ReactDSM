@@ -47,7 +47,34 @@ export default function ElagageVille() {
     { nom: "Sophie L.", ville: ville.name, note: "★★★★★", texte: `Excellente taille de haies à ${ville.name}, devis reçu en 24h et équipe très professionnelle. Prix honnête pour la qualité du travail rendu.` },
     { nom: "Marc D.", ville: ville.name, note: "★★★★★", texte: `Élagage de plusieurs arbres dans mon jardin à ${ville.name}. Résultat impeccable, équipe sérieuse et ponctuelle. Merci DS Multiservices !` }
   ];
-
+  // Données structurées Schema.org pour Google (Rich Snippets)
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "TreeService", // Type d'entreprise spécialisé (Élagage/Abattage)
+  "name": `DS Multiservices - Élagage et Abattage à ${ville.name}`,
+  "image": "https://dsmultiservices.fr/logo-dsm.png",
+  "@id": `https://dsmultiservices.fr/elagage/${ville.slug}`,
+  "url": `https://dsmultiservices.fr/elagage/${ville.slug}`,
+  "telephone": "+33776553370",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": ville.name,
+    "postalCode": ville.cp,
+    "addressRegion": "Gironde",
+    "addressCountry": "FR"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": `${ville.name} (${ville.cp})`
+  },
+  "description": `Entreprise spécialisée dans l'élagage, l'abattage d'arbres et la taille de haies à ${ville.name} (${ville.cp}). Devis gratuit et intervention rapide.`,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "24"
+  }
+};
   return (
     <div className="home-container" style={{ background: "#fdfdfd" }}>
       <Helmet>
@@ -60,6 +87,10 @@ export default function ElagageVille() {
         <meta property="og:image" content="https://dsmultiservices.fr/logo-dsm.png" />
         <link rel="canonical" href={`https://dsmultiservices.fr/elagage/${ville.slug}`} />
         <link rel="preload" as="image" href={imgaccueil} fetchPriority="high" />
+        {/* Balisage Schema.org pour Rich Snippets Google */}
+  <     script type="application/ld+json">
+        {JSON.stringify(schemaData)}
+        </script>
       </Helmet>
 
       <Navbar />

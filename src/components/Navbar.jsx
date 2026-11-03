@@ -47,6 +47,7 @@ export default function Navbar() {
       <ul ref={navRef} className={open ? "nav-links open" : "nav-links"}>
         <li><Link to="/" onClick={closeMenu}>Accueil</Link></li>
         <li><Link to="/services" onClick={closeMenu}>Services</Link></li>
+        <li><Link to="/zones-intervention" onClick={closeMenu}>Zones d'intervention</Link></li>
         <li><Link to="/pourquoi-nous" onClick={closeMenu}>Expertise</Link></li>
         <li><Link to="/avis" onClick={closeMenu}>Avis</Link></li>
         <li><Link to="/faq" onClick={closeMenu}>FAQ</Link></li>
@@ -93,6 +94,8 @@ export default function Navbar() {
         .brand-sub { color: #c5a358; font-size: 0.65rem; font-weight: bold; }
 
         .nav-links { display: flex; list-style: none; gap: 25px; align-items: center; margin: 0; padding: 0; }
+        .nav-links li { display: flex; align-items: center; }
+        
         .nav-links li a { 
             text-decoration: none; 
             color: #333 !important; 
@@ -108,6 +111,7 @@ export default function Navbar() {
             padding: 10px 20px; 
             border-radius: 5px; 
             display: inline-block;
+            text-align: center;
         }
 
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 6px; }
@@ -125,6 +129,7 @@ export default function Navbar() {
             background: #ffffff;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             transform: translateX(100%);
             transition: transform 0.5s ease-in-out;
             z-index: 10000;
@@ -132,10 +137,17 @@ export default function Navbar() {
 
           .nav-links.open { transform: translateX(0); }
 
-          .nav-links li { margin: 20px 0; }
-          .nav-links li a { font-size: 1.2rem; }
+          .nav-links li { 
+            margin: 12px 0; 
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+          }
 
-          .nav-btn-container { margin-top: 20px; }
+          .nav-links li a { font-size: 1.1rem; }
+
+          .nav-btn-container { margin-top: 15px; }
+          .nav-btn { width: 80%; max-width: 250px; padding: 12px 20px; font-size: 1rem; }
 
           .toggle .line1 { transform: rotate(-45deg) translate(-6px, 7px); }
           .toggle .line2 { opacity: 0; }
