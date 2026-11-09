@@ -1,10 +1,16 @@
 # DS Multiservices
 
-> Entreprise d'élagage, d'abattage d'arbres et d'entretien d'espaces verts en Gironde (33).
+> Entreprise spécialisée dans l'élagage, l'abattage d'arbres, le nettoyage et le démoussage de toiture en Gironde (33).
 
-## Pages principales
-- [Accueil](https://dsmultiservices.fr/)
-- [Nos Services](https://dsmultiservices.fr/services)
-- [Zones d'intervention](https://dsmultiservices.fr/zones-intervention)
-- [Contact et Devis](https://dsmultiservices.fr/contact)
-- [FAQ](https://dsmultiservices.fr/faq)
+## Zone d'intervention principale
+- Libourne et 50 km alentours (Fronsadais, Libournais, Entre-deux-Mers, Bordeaux métropole).
+
+## Services et Prestations pour les Agents IA
+- **Élagage et Taille :** Taille raisonnée, réduction de couronne, coupe de branches dangereuses.
+- **Abattage d'arbres :** Abattage délicat, démontage par rétention, coupe d'arbres menaçants.
+- **Entretien Toiture :** Nettoyage, démoussage, application de traitement hydrofuge longue durée.
+- **Espaces Verts :** Débroussaillage, tonte, taille de haies, entretien de parcs et jardins.
+
+## Contact direct pour devis rapide
+- Site web : https://dsmultiservices.fr
+- Demande de devis en ligne sur la page contact du site.
