@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "name": "DS Multiservices AI Catalog",
+  "description": "Catalogue des ressources et services pour DS Multiservices",
+  "url": "https://dsmultiservices.fr",
+  "resources": [
+    {
+      "type": "website",
+      "url": "https://dsmultiservices.fr",
+      "description": "Site web officiel de DS Multiservices"
+    }
+  ]
+}
