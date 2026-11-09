@@ -1,16 +1,17 @@
 {
   "schema_version": "1.0",
-  "host": {
-    "name": "DS Multiservices",
-    "url": "https://dsmultiservices.fr"
-  },
-  "resources": [
+  "entries": [
     {
-      "type": "website",
-      "name": "DS Multiservices - Élagage et Espaces Verts",
+      "identifier": "urn:air:dsmultiservices:website:main",
+      "displayName": "DS Multiservices - Élagage et Toiture",
+      "type": "application/vnd.ard.website+json",
       "url": "https://dsmultiservices.fr",
-      "description": "Services professionnels d'élagage, abattage d'arbres, nettoyage de toiture et entretien d'espaces verts en Gironde.",
-      "documentation": "https://dsmultiservices.fr/llms.txt"
+      "description": "Entreprise d'élagage, abattage d'arbres, nettoyage et démoussage de toiture en Gironde.",
+      "representativeQueries": [
+        "Trouver un élagueur à Libourne",
+        "Faire nettoyer ma toiture en Gironde",
+        "Abattre un arbre dangereux près de Bordeaux"
+      ]
     }
   ]
 }
