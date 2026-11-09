@@ -1,0 +1,7 @@
+User-agent: *
+
+Disallow: /mentions-legales
+
+Allow: /
+
+Sitemap: https://dsmultiservices.fr/sitemap.xml
