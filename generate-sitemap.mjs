@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { VILLES_GIRONDE } from './src/data/villes.js';
+import { VILLES_GIRONDE } from './src/data/villes.mjs';
 
 const BASE_URL = 'https://dsmultiservices.fr';
 
@@ -28,10 +28,18 @@ staticPages.forEach(page => {
   sitemap += `  </url>\n`;
 });
 
-// 2. Injection automatique de toutes les villes de Gironde (Programmatic SEO)
+// 2. Injection automatique de toutes les villes de Gironde (Élagage + Abattage)
 VILLES_GIRONDE.forEach(ville => {
+  // URLs Élagage
   sitemap += `  <url>\n`;
   sitemap += `    <loc>${BASE_URL}/elagage/${ville.slug}</loc>\n`;
+  sitemap += `    <changefreq>monthly</changefreq>\n`;
+  sitemap += `    <priority>0.7</priority>\n`;
+  sitemap += `  </url>\n`;
+
+  // URLs Abattage
+  sitemap += `  <url>\n`;
+  sitemap += `    <loc>${BASE_URL}/abattage/${ville.slug}</loc>\n`;
   sitemap += `    <changefreq>monthly</changefreq>\n`;
   sitemap += `    <priority>0.7</priority>\n`;
   sitemap += `  </url>\n`;
@@ -41,4 +49,4 @@ sitemap += `</urlset>`;
 
 // Écriture du fichier sitemap.xml dans le dossier public
 fs.writeFileSync('./public/sitemap.xml', sitemap);
-console.log(`✅ Sitemap généré avec succès : ${staticPages.length + VILLES_GIRONDE.length} URLs intégrées !`);
+console.log(`✅ Sitemap généré avec succès : ${staticPages.length + (VILLES_GIRONDE.length * 2)} URLs intégrées !`);

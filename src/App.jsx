@@ -4,6 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import ScrollToTop from "./components/ScrollToTop";
 import ElagageVille from './pages/ElagageVille';
+import AbattageVille from "./pages/AbattageVille";
 
 
 import Home from "./pages/Home";
@@ -43,6 +44,7 @@ export default function App() {
         <Route path="/mentions-legales" element={<MentionsLegales />} />
         <Route path="/zones-intervention" element={<ZonesIntervention />} />
         <Route path="/elagage/:villeSlug" element={<ElagageVille />} />
+        <Route path="/abattage/:villeSlug" element={<AbattageVille />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
