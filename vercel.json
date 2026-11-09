@@ -4,7 +4,7 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!ai-catalog\\.json$|llms\\.txt$|sitemap\\.xml$|assets/|favicon\\.ico).*)",
       "destination": "/index.html"
     }
   ],
