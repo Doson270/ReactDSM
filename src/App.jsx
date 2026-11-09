@@ -4,7 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import ScrollToTop from "./components/ScrollToTop";
 import ElagageVille from './pages/ElagageVille';
-import AbattageVille from "./pages/AbattageVille";
+import AbattageVille from './pages/AbattageVille';
 
 
 import Home from "./pages/Home";

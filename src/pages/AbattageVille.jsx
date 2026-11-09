@@ -47,12 +47,26 @@ export default function AbattageVille() {
 
   return (
     <div className="home-container" style={{ background: "#fdfdfd", color: "#2c3e50" }}>
-      <Helmet>
-        <title>Abattage & Démontage d'Arbres à {ville.name} ({ville.cp}) | DS Multiservices</title>
-        <meta name="description" content={`Entreprise spécialisée dans l'abattage d'arbres complexes, démontage avec rétention et mise en sécurité à ${ville.name} (${ville.cp}). Devis gratuit.`} />
-        <link rel="canonical" href={`https://dsmultiservices.fr/abattage/${ville.slug}`} />
-        <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
-      </Helmet>
+        <Helmet>
+            {/* Titre corrigé avec backticks pour bien évaluer les variables */}
+            <title>{`Abattage & Démontage d'Arbres à ${ville.name}${ville.cp} | DS Multiservices`}</title>
+
+            {/* Meta description avec fallback sécurisé */}
+            <meta 
+            name="description" 
+            content={`Entreprise spécialisée dans l'abattage d'arbres complexes, démontage avec rétention et mise en sécurité à ${ville.name}${ville.cp}. Devis gratuit.`} 
+            />
+
+            {/* URL canonique stricte */}
+            <link rel="canonical" href={`https://dsmultiservices.fr/abattage/${ville.slug}`}/>
+
+            {/* Schema JSON-LD */}
+            {schemaData && (
+            <script type="application/ld+json">
+                {JSON.stringify(schemaData)}
+            </script>
+            )}
+        </Helmet>
 
       <Navbar />
 
