@@ -4,10 +4,10 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import ScrollToTop from "./components/ScrollToTop";
 
-// Importation statique pour la page d'accueil (critique pour la vitesse d'affichage initiale)
+// Importation statique pour la page d'accueil (critique pour la vitesse d'affichage initiale / LCP)
 import Home from "./pages/Home";
 
-// Importations paresseuses (lazy loading) pour alléger le bundle principal
+// Importations paresseuses (lazy loading) pour alléger le bundle principal JS
 const Services = lazy(() => import("./pages/Services"));
 const Contact = lazy(() => import("./pages/Contact"));
 const PourquoiNous = lazy(() => import("./pages/PourquoiNous"));
@@ -23,7 +23,54 @@ import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
 import "./App.css";
 
+// Hook personnalisé pour charger le script Google global (gtag) en différé
+function useDeferredGtag(tagId) {
+  useEffect(() => {
+    const loadTag = () => {
+      if (window.tagLoaded || !tagId) return;
+      window.tagLoaded = true;
+
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${tagId}`;
+      document.head.appendChild(script);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+      gtag("js", new Date());
+      gtag("config", tagId);
+    };
+
+    // Charge le script après 3 secondes ou à la première interaction pour ne pas bloquer le LCP
+    const timer = setTimeout(loadTag, 3000);
+    const interactionEvents = ["scroll", "mousemove", "touchstart", "keydown"];
+    
+    const triggerLoader = () => {
+      loadTag();
+      interactionEvents.forEach((event) => window.removeEventListener(event, triggerLoader));
+      clearTimeout(timer);
+    };
+
+    interactionEvents.forEach((event) =>
+      window.addEventListener(event, triggerLoader, { passive: true })
+    );
+
+    return () => {
+      clearTimeout(timer);
+      interactionEvents.forEach((event) =>
+        window.removeEventListener(event, triggerLoader)
+      );
+    };
+  }, [tagId]);
+}
+
 export default function App() {
+  // Injection de ton ID Google Ads officiel de manière optimisée
+  useDeferredGtag("AW-18085079647");
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
